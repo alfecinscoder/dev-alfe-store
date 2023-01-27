@@ -1,0 +1,242 @@
+<ul>
+
+  {% for link in linklists[settings.header_menu].links %}
+
+  {% assign second_handle = link.title | handle %}
+
+  
+    {% if link.title == settings.megadropdown_link %}
+
+  	 <li class="sub_nav {% if link.active %}active{% endif %}"> 
+    {{ link.title | link_to: link.url }}
+    <ul class="dropdown">
+      
+      {% assign mega = 0 %}
+      {% if settings.mega_1_show %}{% assign mega = mega | plus: 1 %}{% endif %}
+      {% if settings.mega_2_show %}{% assign mega = mega | plus: 1 %}{% endif %}
+      {% if settings.mega_3_show %}{% assign mega = mega | plus: 1 %}{% endif %}
+      {% if settings.mega_4_show %}{% assign mega = mega | plus: 1 %}{% endif %}
+      {% if settings.mega_5_show %}{% assign mega = mega | plus: 1 %}{% endif %}
+
+      {% if mega > 0 %} 
+      {% if settings.mega_1_show %}            
+      <li class="mega_menu">
+        {% assign image_handle = linklists[settings.mega_1_links].handle %}
+       
+       <h6><a href="/collections/{{ linklists[settings.mega_1_links].handle }}">{{ linklists[settings.mega_1_links].title }}</a></h6>
+        <ul class="sub_menu">
+          {% for link in linklists[settings.mega_1_links].links %}
+          <li class="{% if link.active %}active{% endif %}">{{ link.title | link_to: link.url }}</li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endif %}
+
+      {% if settings.mega_2_show %}            
+      <li class="mega_menu">
+        {% assign image_handle = linklists[settings.mega_2_links].handle %}
+      
+		<h6><a href="/collections/{{ linklists[settings.mega_2_links].handle }}">{{ linklists[settings.mega_2_links].title }}</a></h6>
+        <ul class="sub_menu">
+          {% for link in linklists[settings.mega_2_links].links %}
+          <li class="{% if link.active %}active{% endif %}" >{{ link.title | link_to: link.url }}</li>
+          {% endfor %}
+        </ul>
+      </li>
+
+      {% endif %}
+
+      {% if settings.mega_3_show %}            
+      <li class="mega_menu">
+        {% assign image_handle = linklists[settings.mega_3_links].handle %}
+        
+        <h6><a href="/collections/{{ linklists[settings.mega_3_links].handle }}">{{ linklists[settings.mega_3_links].title }}</a></h6>
+        <ul class="sub_menu">
+          {% for link in linklists[settings.mega_3_links].links %}
+          <li class="{% if link.active %}active{% endif %}">{{ link.title | link_to: link.url }}</li>
+          {% endfor %}
+        </ul>
+      </li>
+
+      {% endif %}
+
+      {% if settings.mega_4_show %}            
+      <li class="mega_menu">
+        {% assign image_handle = linklists[settings.mega_4_links].handle %}
+     
+        <h6><a href="/collections/{{ linklists[settings.mega_4_links].handle }}">{{ linklists[settings.mega_4_links].title }}</a></h6>
+        <ul class="sub_menu">
+          {% for link in linklists[settings.mega_4_links].links %}
+          <li class="{% if link.active %}active{% endif %}" >{{ link.title | link_to: link.url }}</li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endif %}
+
+
+      {% if settings.mega_5_show %}            
+      <li class="mega_menu">
+        {% assign image_handle = linklists[settings.mega_5_links].handle %}
+        
+        <h6><a href="/collections/{{ linklists[settings.mega_5_links].handle }}">{{ linklists[settings.mega_5_links].title }}</a></h6>
+        <ul class="sub_menu">
+          {% for link in linklists[settings.mega_5_links].links %}
+          <li class="{% if link.active %}active{% endif %}">{{ link.title | link_to: link.url }}</li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endif %}
+      {% endif %}
+
+    </ul>
+  </li> 
+
+  
+    {% elsif link.title == settings.shop_megadropdown_link %}
+
+    <li class="sub_nav {% if link.active  %}active{% endif %}"> 
+      {{ link.title | link_to: link.url }}
+
+      <ul class="dropdown shop_menu">  
+
+        {% assign mega = 0 %}
+        {% if settings.mega_shop_1_show %}{% assign mega = mega | plus: 1 %}{% endif %}
+        {% if settings.mega_shop_2_show %}{% assign mega = mega | plus: 1 %}{% endif %}
+        {% if settings.mega_shop_3_show %}{% assign mega = mega | plus: 1 %}{% endif %}
+        {% if settings.mega_shop_4_show %}{% assign mega = mega | plus: 1 %}{% endif %}
+
+
+        {% if settings.mega_shop_1_show != empty   %}  
+		
+        <li class="mega_menu"> 
+          <div class="image_navigation_hover">
+            <a href="/collections/{{ settings.mega_shop_1_show }}">
+          
+              {% if settings.mega_shop_1_image != blank %} 
+              <img src="{{ settings.mega_shop_1_image | img_url: 'large' }}" alt="{{ settings.mega_shop_1_show  }}">
+              {% else %}  
+              {{ 'collection-1' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}  
+
+            </a>
+          
+          </div> 
+         
+          <h6><a href="/collections/{{ settings.mega_shop_1_show }}">{{ settings.mega_shop_1_show | replace: '-',' '  }}</a></h6>
+        </li>
+
+        {% endif %}
+
+
+        {% if settings.mega_shop_2_show != empty %}  
+
+        <li class="mega_menu"> 
+          <div class="image_navigation_hover">
+            <a href="/collections/{{ settings.mega_shop_2_show }}">
+                {% if settings.mega_shop_2_image != blank %} 
+                <img src="{{ settings.mega_shop_2_image | img_url: 'large' }}" alt="{{ settings.mega_shop_2_show  }}">
+                {% else %}  
+                {{ 'collection-2' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}  
+			  </a>
+          </div> 
+          <h6><a href="/collections/{{ settings.mega_shop_2_show }}">{{ settings.mega_shop_2_show | replace: '-',' '  }}</a></h6>
+        </li>
+        {% endif %}
+
+        {% if settings.mega_shop_3_show != empty %}  
+
+
+        <li class="mega_menu"> 
+          <div class="image_navigation_hover">
+            <a href="/collections/{{ settings.mega_shop_3_show }}">
+              {% if settings.mega_shop_3_image != blank %} 
+              <img src="{{ settings.mega_shop_3_image | img_url: 'large' }}" alt="{{ settings.mega_shop_3_show  }}">
+              {% else %}  
+              {{ 'collection-3' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}  
+			  </a>
+          </div> 
+          <h6><a href="/collections/{{ settings.mega_shop_3_show }}">{{ settings.mega_shop_3_show | replace: '-',' ' }}</a></h6>
+        </li>
+        {% endif %}
+
+        {% if settings.mega_shop_4_show != empty %}  
+
+
+        <li class="mega_menu"> 
+          <div class="image_navigation_hover">
+            <a href="/collections/{{ settings.mega_shop_4_show }}">
+           {% if settings.mega_shop_4_image != blank %} 
+              <img src="{{ settings.mega_shop_4_image | img_url: 'large' }}" alt="{{ settings.mega_shop_3_show  }}">
+              {% else %}  
+              {{ 'collection-4' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}  
+            </a>
+          </div> 
+          <h6><a href="/collections/{{ settings.mega_shop_4_show }}">{{ settings.mega_shop_4_show | replace: '-',' ' }}</a></h6>
+        </li>
+        {% endif %}
+
+        {% if settings.mega_shop_5_show  != empty %}  
+
+		<li class="mega_menu"> 
+          <div class="image_navigation_hover">
+            <a href="/collections/{{ settings.mega_shop_5_show }}">
+             {% if settings.mega_shop_5_image != blank %}
+              <img src="{{ settings.mega_shop_5_image | img_url: 'large' }}" alt="{{ settings.mega_shop_5_show  }}">
+              {% else %}  
+              {{ 'collection-5' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}  
+            </a></div> 
+          <h6><a href="/collections/{{ settings.mega_shop_5_show }}">{{ settings.mega_shop_5_show | replace: '-',' ' }}</a></h6>
+        </li>
+        {% endif %}
+      </ul>
+
+    </li>
+
+  
+  {% else %}
+  
+  {% if linklists[second_handle] and linklists[second_handle].links.size > 0 %}
+  <li class="sub_nav {% if second_level.active %}active{% endif %}">{{ link.title | link_to: link.url }}
+  
+      <ul>
+        {% for second_level in linklists[second_handle].links %}
+
+        <li class="single_menu {% if second_level.active %}active{% endif %}">
+          <a href="{{ second_level.url }}"> - {{ second_level.title }}</a>
+          
+           <!-- START THIRD LEVEL -->
+           
+            
+            {% if linklists[third_handle] and linklists[third_handle].links.size > 0 %}          
+             <ul class="dropdown single_dropdown">
+              {% for third_level in linklists[third_handle].links %}
+              {% assign forth_handle = third_level.title | handle %}
+               <li class="single_menu {% if linklists[forth_handle].links.size > 0 %}has-sub{% endif %} {% if third_level.active %}active{% endif %}">
+              
+                <a href="{{ third_level.url }}"> {{ third_level.title }} </a>
+                  
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+            <!-- END THIRD LEVEL -->
+          
+        </li>
+        {% endfor %}
+
+      </ul>
+  </li>
+  
+  {% else %}
+   <li class="{% if link.active  %}active{% endif %}">{{ link.title | link_to: link.url }}</li>
+  {% endif %}
+  {% endif %}
+  
+  {% endfor %}
+
+
+</ul>

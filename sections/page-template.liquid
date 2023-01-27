@@ -1,0 +1,22 @@
+<!-- /templates/page.liquid -->
+
+ <!--======  #PAGE BANNER  ======-->
+<div id="page_banner" class="wow fadeIn" data-wow-delay="200ms"  style="background:url({% if settings.page_banner != blank %}{{ settings.page_banner | img_url : 'master' }}{% else %}{{'banner_image.png' | asset_url }}{% endif %}) center center no-repeat; background-size:cover;">
+  <div class="container">
+    <div class="banner_caption">         
+      <h3>{{ page.title }}</h3>  
+      {% include 'breadcrumb' %}
+    </div>
+  </div>
+</div>   
+
+    
+<div id="about_shop">
+  <div class="container">   
+    {{ page.content }}
+  </div>
+</div>    
+
+
+
+

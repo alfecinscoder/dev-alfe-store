@@ -1,0 +1,29 @@
+ <div class="grid__item large--one-third two-quarters medium-down--one-whole">
+                <!-- Blog List -->  
+                <div class="blog_item">
+                  {% if item.image %}
+                  <div class="blog_img">
+                    <a href="{{ item.url }}" title="{{ item.title | escape }}">
+                      {{ item  | img_url: 'large' | img_tag: item.title }}
+                    </a>
+                  </div>
+                  {% endif %}
+                  <div class="blog_info">
+                    <a href="{{ item.url }}">{{ item.title }}</a>
+                    <div class="blog_creat">
+                      <span>{{ item.published_at | date: "%d %B, %Y" }}</span><span>{{ item.author }}</span>
+
+                    </div>
+                    <div class="blog_div"></div>
+
+                    {% if article.excerpt.size > 0 %}
+                    <p> {{ item.excerpt }}</p>
+                    {% else %}
+                    <p>{{ item.content | strip_html | truncatewords: 20 }}</p>
+                    {% endif %}
+                    <div class="view_btn"><a href="{{ item.url }}">read post</a></div>                                                          
+                  </div>
+                  <div class="border_effect"></div>
+                </div>
+              </div> 
+             

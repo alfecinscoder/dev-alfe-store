@@ -1,0 +1,92 @@
+<!-- /templates/customers/account.liquid -->
+
+<!--======  #PAGE BANNER  ======-->
+
+<div class="wow fadeIn" data-wow-delay="200ms" id="page_banner" style="background:url({% if settings.customer_banner != blank %}{{ settings.customer_banner | img_url : 'master' }}{% else %}{{'banner_image.png' | asset_url }}{% endif %})center center no-repeat;  background-size:cover;"> 
+ <div class="container">
+    <div class="banner_caption">         
+      <h3>{{ 'customer.account.title' | t }}</h3>  
+      {%  include 'breadcrumb' %}
+    </div>
+  </div>
+</div>  
+
+<!--======  #CUSTOMER ACCOUNT  ============-->
+<div id="customer-account">
+  <div class="container">
+    <div class="grid">
+      <div class="grid__item two-thirds medium-down--one-whole">
+        <h4>{{ 'customer.account.details' | t }}</h4>
+        <div class="customer_orders"> {% paginate customer.orders by 20 %}
+          {% if customer.orders.size != 0 %}
+          <div class="table-wrap">
+            <table class="full">
+              <thead>
+                <tr>
+                  <th>{{ 'customer.orders.order_number' | t }}</th>
+                  <th>{{ 'customer.orders.date' | t }}</th>
+                  <th>{{ 'customer.orders.payment_status' | t }}</th>
+                  <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
+                  <th>{{ 'customer.orders.total' | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+              
+              {% for order in customer.orders %}
+              <tr>
+                <td>{{ order.name | link_to: order.customer_url }}</td>
+                <td>{{ order.created_at | date: format: 'month_day_year' }}</td>
+                <td>{{ order.financial_status_label }}</td>
+                <td>{{ order.fulfillment_status_label }}</td>
+                <td>{{ order.total_price | money }}</td>
+              </tr>
+              {% endfor %}
+                </tbody>
+              
+            </table>
+          </div>
+          {% else %}
+          <p>{{ 'customer.orders.none' | t }}</p>
+          {% endif %}
+          {% if paginate.pages > 1 %}
+          <div class="pagination-wrapper">
+            {% include 'pagination' %}
+          </div>
+          {% endif %}
+          {% endpaginate %} 
+        </div>
+      </div>
+      <div class="grid__item one-third medium-down--one-whole">
+        <div id="customer_sidebar"> {% if customer.default_address != nil %}
+          <h6>{{ customer.name }}</h6>
+          <p class="email">{{ customer.email }}</p>
+          <div class="address">
+            <p>{{ customer.default_address.address1 }}
+           {% if customer.default_address.address2 != "" %}
+              {{ customer.default_address.address2 }}
+              {% endif %}
+            {% if customer.default_address.city != "" %}
+              <br/>  {{ customer.default_address.city }}
+              {% endif %}
+             {% if customer.default_address.province_code != "" %}
+              <br/>  {{ customer.default_address.province_code | upcase }}
+              {% endif %}
+            {% if customer.default_address.zip != "" %}
+              <br/>  {{ customer.default_address.zip | upcase }}
+              {% endif %}
+            {% if customer.default_address.country != "" %}
+             <br/>   {{ customer.default_address.country }}
+              {% endif %}
+           {% if customer.default_address.phone != "" %}
+             <br/>   {{ customer.default_address.phone }}
+              {% endif %}</p>
+            {% endif %} <a href="/account/addresses" class="btn btn--small">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

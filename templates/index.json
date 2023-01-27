@@ -1,0 +1,147 @@
+{
+  "sections": {
+    "15ae4aad-2a1c-4b84-8387-f019fdc8ad4f": {
+      "type": "Featured-Blog",
+      "settings": {
+        "title": "LATEST BLOG",
+        "blog": "news"
+      }
+    },
+    "a4b5cfc5-985e-49a2-9b02-79a55e53a41f": {
+      "type": "Collection-List",
+      "blocks": {
+        "template--15064410652745__a4b5cfc5-985e-49a2-9b02-79a55e53a41f-1669039891e97157d9-0": {
+          "type": "image",
+          "settings": {
+            "featured_collection": ""
+          }
+        },
+        "template--15064410652745__a4b5cfc5-985e-49a2-9b02-79a55e53a41f-1669039891e97157d9-1": {
+          "type": "image",
+          "settings": {
+            "featured_collection": ""
+          }
+        },
+        "template--15064410652745__a4b5cfc5-985e-49a2-9b02-79a55e53a41f-1669039891e97157d9-2": {
+          "type": "image",
+          "settings": {
+            "featured_collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15064410652745__a4b5cfc5-985e-49a2-9b02-79a55e53a41f-1669039891e97157d9-0",
+        "template--15064410652745__a4b5cfc5-985e-49a2-9b02-79a55e53a41f-1669039891e97157d9-1",
+        "template--15064410652745__a4b5cfc5-985e-49a2-9b02-79a55e53a41f-1669039891e97157d9-2"
+      ],
+      "settings": {
+        "button_name": ""
+      }
+    },
+    "a30e03c1-4a46-4f8e-a48a-91978d8c5a0d": {
+      "type": "Slideshow",
+      "blocks": {
+        "template--15064410652745__a30e03c1-4a46-4f8e-a48a-91978d8c5a0d-1669039891826cf698-0": {
+          "type": "image",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "button_name": "",
+            "link": ""
+          }
+        },
+        "template--15064410652745__a30e03c1-4a46-4f8e-a48a-91978d8c5a0d-1669039891826cf698-1": {
+          "type": "image",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "button_name": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15064410652745__a30e03c1-4a46-4f8e-a48a-91978d8c5a0d-1669039891826cf698-0",
+        "template--15064410652745__a30e03c1-4a46-4f8e-a48a-91978d8c5a0d-1669039891826cf698-1"
+      ],
+      "settings": {
+        "slider_home_transition": "fade",
+        "slider_home_show_dots": true,
+        "slider_home_show_nav": true,
+        "slideshow_auto": true,
+        "slider_home_rate": "7000"
+      }
+    },
+    "f219f5ee-c3d4-4f36-9782-9cf6b420438a": {
+      "type": "Featured-Collections",
+      "settings": {
+        "title": "Featured Collection",
+        "bestseller_collection": "",
+        "num_per_row": "4"
+      }
+    },
+    "52f5e3c4-27a9-43dd-96ab-6d226344f94a": {
+      "type": "Brand-List",
+      "blocks": {
+        "template--15064410652745__52f5e3c4-27a9-43dd-96ab-6d226344f94a-1669039891ec0cc358-0": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "template--15064410652745__52f5e3c4-27a9-43dd-96ab-6d226344f94a-1669039891ec0cc358-1": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "template--15064410652745__52f5e3c4-27a9-43dd-96ab-6d226344f94a-1669039891ec0cc358-2": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "template--15064410652745__52f5e3c4-27a9-43dd-96ab-6d226344f94a-1669039891ec0cc358-3": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "template--15064410652745__52f5e3c4-27a9-43dd-96ab-6d226344f94a-1669039891ec0cc358-4": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15064410652745__52f5e3c4-27a9-43dd-96ab-6d226344f94a-1669039891ec0cc358-0",
+        "template--15064410652745__52f5e3c4-27a9-43dd-96ab-6d226344f94a-1669039891ec0cc358-1",
+        "template--15064410652745__52f5e3c4-27a9-43dd-96ab-6d226344f94a-1669039891ec0cc358-2",
+        "template--15064410652745__52f5e3c4-27a9-43dd-96ab-6d226344f94a-1669039891ec0cc358-3",
+        "template--15064410652745__52f5e3c4-27a9-43dd-96ab-6d226344f94a-1669039891ec0cc358-4"
+      ],
+      "settings": {
+        "title": ""
+      }
+    },
+    "5bbb3890-239c-47e1-9813-29469a4dcddd": {
+      "type": "Instagram",
+      "settings": {
+        "title": "",
+        "insta_client_id": "",
+        "insta_access_Token": "",
+        "insta_userid": "",
+        "insta_limit": ""
+      }
+    }
+  },
+  "order": [
+    "15ae4aad-2a1c-4b84-8387-f019fdc8ad4f",
+    "a4b5cfc5-985e-49a2-9b02-79a55e53a41f",
+    "a30e03c1-4a46-4f8e-a48a-91978d8c5a0d",
+    "f219f5ee-c3d4-4f36-9782-9cf6b420438a",
+    "52f5e3c4-27a9-43dd-96ab-6d226344f94a",
+    "5bbb3890-239c-47e1-9813-29469a4dcddd"
+  ]
+}

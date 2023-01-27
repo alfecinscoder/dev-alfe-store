@@ -1,0 +1,115 @@
+<footer id="footer"> 
+  {% if section.settings.footer_newsletter_enable %}
+  <div id="newsletter"  class="wow fadeIn"  data-wow-delay="400ms">
+    <div class="footer_title">
+      <h5>{{ section.settings.newsletter_title }}</h5>
+    </div>   
+    <div class="one-third medium-large--two-fifths newsletter_field medium--two-thirds small--seven-eighths"> 
+      {% if settings.newsletter_form_action != blank %}
+      <form action="{{ settings.newsletter_form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" class="connected_form">
+        <div class="input_group">
+          <input type="email" aria-label="Email" placeholder="Enter Your Email Address" name="EMAIL" id="mail" required>
+          <button type="submit"  aria-label="subscribe" class="email_btn" value="Subscribe" name="subscribe" id="subscribe" ></button>
+        </div>
+      </form>
+      {% else %}
+        {% form 'customer' %}
+        <div class="connected_form">
+          {{ form.errors | default_errors }}
+            {% if form.posted_successfully? %}
+              <p class="form--success">{{ 'contact.form.post_success' | t }}</p>
+            {% else %}
+
+            <div class="input_group">
+              <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="Enter Your Email Address" name="contact[email]" id="mail" required/> 
+              <button type="submit"  aria-label="subscribe" class="email_btn" value="Subscribe" name="subscribe" id="subscribe" ></button>
+            </div>
+            {% endif %}
+        </div>
+        {% endform %}
+      {% endif %}
+    </div>  
+      <a href="javascript:;" id="scrollToTop" class="fa fa-angle-up"></a>
+  </div>  
+  {% endif %}    
+  <div class="sub_footer wow fadeIn"  data-wow-delay="400ms">
+    <div class="container">                     
+      <div class="grid">
+        {% if section.settings.copyright_enble %}
+        <div class="grid__item seven-tenths medium-down--one-whole">
+          <p class="footer_line">{{ section.settings.copyright_description }}</p>
+        </div>
+        {% endif %} 
+
+        {% if section.settings.payment_method_enble %}
+        <div class="grid__item three-tenths medium-down--one-whole">
+          <ul class="payment_method">
+            {% for type in shop.enabled_payment_types %} 
+            <li><img src="{{ type | payment_type_img_url }}" alt="{{type}}"/></li>
+            {% endfor %}
+
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</footer>   
+
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Footer Newsletter"
+      },
+      {
+        "type": "checkbox",
+        "id": "footer_newsletter_enable",
+        "label": "Show",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "newsletter_title",
+        "label": "Title Name",
+        "default": "STAY CONNECTED TO LUXUMBOURG"
+      },
+     
+      {
+        "type": "header",
+        "content": "Copyright"
+      },
+      {
+        "type": "checkbox",
+        "id": "copyright_enble",
+        "label": "Show",
+        "default": true
+      },
+      {
+        "type": "textarea",
+        "id": "copyright_description",
+        "label": "Copyright content",
+        "default": "©Copyright 2016"
+      },
+      {
+        "type": "header",
+        "content": "Payment Method"
+      },
+      {
+        "type": "checkbox",
+        "id": "payment_method_enble",
+        "label": "Show",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

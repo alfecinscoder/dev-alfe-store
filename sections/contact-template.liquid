@@ -1,0 +1,247 @@
+<!-- /templates/page.contact.liquid -->
+{% comment %}
+
+This page template is a requirement if you are submitting your theme to the Shopify Theme Store.
+Be sure to select page.contact as the template from the admin page to have this template take effect.
+
+For information on adding more fields, visit:
+- http://docs.shopify.com/support/configuration/store-customization/adding-fields-to-the-liquid-contact-form
+
+{% endcomment %}
+
+
+<!--======  #PAGE BANNER  ======-->
+
+<div id="page_banner" class="wow fadeIn" data-wow-delay="200ms" style="{% if section.settings.image != blank %}background:url({{ section.settings.image | img_url : 'master' }}) center;{% else %}background:url({{ 'banner_image.png' | asset_url }}) center;{% endif %} background-size:cover;">   	
+    <div class="container">
+      <div class="banner_caption">         
+         <h3>{{ page.title }}</h3>  
+        {% include 'breadcrumb' %}
+      </div>
+    </div>
+</div>  
+
+
+<!--======  #CONTACT WAY  ============-->
+<div id="contact_way" data-section-id="{{ section.id }}"  data-scrollwheel = "{{ section.settings.enable_google_zoom }}"   data-section-type="contact-map" data-zoom_level="{{ section.settings.map_zoom_level }}" data-address="{{ section.settings.google_map_address }}">
+  <div class="container--small">
+    {{ page.content }}
+    
+    {% if section.settings.enable_phone  or section.settings.enable_email_address or section.settings.enable_address  %}
+    <div class="grid">
+      {% if section.settings.enable_phone %}
+      <div class="grid__item one-third medium-down--one-whole">
+        <div class="connect_with">
+          <div class="icon"><i class="fa fa-mobile"></i></div>
+          <div class="connect_link">
+            <h6>{{ section.settings.phone_title }}</h6>
+           <a href="tel:{{ section.settings.phone_no_1 }}">{{ section.settings.phone_no_1 }}</a> <a href="tel:{{ section.settings.phone_no_2 }}">{{ section.settings.phone_no_2 }}</a></div>
+        </div>
+       </div>
+      {% endif %}
+     
+      {% if section.settings.enable_email_address %}
+      <div class="grid__item one-third medium-down--one-whole">
+      <div class="connect_with">
+          <div class="icon"><i class="fa fa-envelope-o"></i></div>
+          <div class="connect_link">
+            <h6>{{ section.settings.email_address_title }}</h6>
+            <a href="mailto:{{ section.settings.section.settings.email_address_1 }}">{{ section.settings.email_address_1 }}</a> 
+            <a href="mailto:{{ section.settings.section.settings.email_address_2 }}">{{ section.settings.section.settings.email_address_2 }}</a></div>
+        </div>
+      </div>
+      {% endif %}
+      
+        {% if section.settings.enable_address %}
+      <div class="grid__item one-third medium-down--one-whole">
+        <div class="connect_with">
+          <div class="icon"><i class="fa fa-home"></i></div>
+          <div class="connect_link">
+            <h6>{{ section.settings.address_title }}</h6>
+            <p>{{ section.settings.address_content }} </p>
+           </div>
+        </div>
+      </div>
+      {% endif %}
+      
+    </div>
+
+    {% endif %}
+   
+  </div>
+</div>
+
+
+
+
+
+<!--======  #GET IN TOUCH ============-->
+<div id="contact_us" class="clearfix">    
+   	<div class="one-half medium-down--one-whole connect_us">
+      <div class="get_in_touch">
+        <h6>{{ section.settings.form_title_name }}</h6>
+        <div class="divider"></div>
+        {% form 'contact' %}
+        <div class="mail_form grid">
+          {% if form.posted_successfully? %}
+          <p class="note form-success">
+            {{ 'contact.form.post_success' | t }}
+          </p>
+          {% endif %}
+
+          {{ form.errors | default_errors }}
+          {% assign name_attr = 'contact.form.name' | t | handle %}
+          <div class="grid__item large--one-half">
+            <input type="text" arial-label="Name" id="ContactFormName"  name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.name' | t }}"  value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}" required>
+          </div>
+          <div class="grid__item large--one-half">
+            <input type="email" arial-label="Email" id="ContactFormEmail"  name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" required>
+          </div>
+          <div class="grid__item large--one-whole">
+            {% assign name_attr = 'contact.form.phone' | t | handle %}
+            <label for="ContactFormPhone" class="hidden-label">{{ 'contact.form.phone' | t }}</label>
+            <input type="tel" id="ContactFormPhone" arial-label="Phone"  name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+          </div>
+          <div class="grid__item large--one-whole">
+            <textarea  id="ContactFormMessage"  name="contact[body]" arial-label="Message" placeholder="{{ 'contact.form.message' | t }}">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+          </div>
+          <div class="grid__item large--one-whole">
+            <input type="submit" class="btn--primary" arial-label="submit" value="{{ 'contact.form.send' | t }}">
+          </div>
+          {% endform %}
+        </div>
+      </div>
+    </div>
+    {% if section.settings.enable_google_map %}
+    <div class="one-half medium-down--one-whole map_address">
+        <div id="map-canvas"></div>
+    </div>
+    {% endif %}
+</div>
+
+
+ {% if section.settings.enable_google_map and section.settings.google_map_address != blank %}
+{{ "//maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false" | script_tag }}
+
+{% endif %} 
+
+
+
+{% schema %}
+ {
+    "name": "Contact Page",
+    "settings": [
+	{
+		"type":"image_picker",
+		"id":"image",
+		"label":"Banner Image",
+		"info": "Maximum image dimensions are  1920px wide by 278px high. The uploaded file will be resized to fit within those constraints."
+	},     
+    {
+      "type":"header",
+   	   "content":"Contact Detail"
+    },
+	{
+		"type":"checkbox",
+		"id":"enable_phone",
+		"label":"Display Phone Number"
+	},
+	{
+		"type":"text",
+		"id":"phone_title",
+		"label":"Title Name"
+	},
+	{
+		"type":"text",
+		"id":"phone_no_1",
+		"label":"Number 1"
+	},
+	{
+		"type":"text",
+		"id":"phone_no_2",
+		"label":"Number 2"
+	},
+	{
+		"type":"checkbox",
+		"id":"enable_email_address",
+		"label":"Display Email Address"
+	},
+	{
+		"type":"text",
+		"id":"email_address_title",
+		"label":"Title Name"
+	},
+    {
+      "type":"text",
+      "id":"email_address_1",
+      "label":"Email Address 1"
+    },
+	{
+		"type":"text",
+		"id":"email_address_2",
+		"label":"Email Address 2"
+	},
+	{
+		"type":"checkbox",
+		"id":"enable_address",
+		"label":"Enable Address"
+   },
+	{
+		"type":"text",
+		"id":"address_title",
+		"label":"Title"
+	},
+	{
+		"type":"textarea",
+		"id":"address_content",
+		"label":"Address"
+	},
+	
+	{
+      "type": "header",
+      "content": "Contact form"
+    },
+    {
+      "type": "text",
+      "id": "form_title_name",
+      "label": "Title",
+      "default": "Send Mail"
+    },
+    {
+      "type": "header",
+      "content": "Google Map"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_google_map",
+      "label": "Show",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "google_map_address",
+      "label": "Address",
+      "default": "150 Elgin Street, 8th Floor. Ottawa, ON, Canada. K2P 1L4"
+    },
+    {
+      "type": "text",
+      "id": "map_zoom_level",
+      "label": "Zoom Level",
+      "default": "17"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_google_zoom",
+      "label": "Enable Scrool Wheel Zoom",
+      "default":false
+    }
+	  
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

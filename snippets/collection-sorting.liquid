@@ -1,0 +1,80 @@
+<!-- /snippets/collection-sorting.liquid -->
+
+<select name="SortBy" id="filter-drp" class="filter-drp">                                  
+<option value="manual" {% if collection.sort_by contains 'manual' %}selected="selected"{% endif %}>{{ 'collections.sorting.featured' | t }}</option>
+<option value="best-selling" {% if collection.sort_by contains 'best-selling' %}selected="selected"{% endif %}>{{ 'collections.sorting.best_selling' | t }}</option>
+<option value="title-ascending" {% if collection.sort_by contains 'title-ascending' %}selected="selected"{% endif %}>{{ 'collections.sorting.az' | t }}</option>
+<option value="title-descending" {% if collection.sort_by contains 'title-descending' %}selected="selected"{% endif %}>{{ 'collections.sorting.za' | t }}</option>
+<option value="price-ascending" {% if collection.sort_by contains 'price-ascending' %}selected="selected"{% endif %}>{{ 'collections.sorting.price_ascending' | t }}</option>
+<option value="price-descending" {% if collection.sort_by contains 'price-descending' %}selected="selected"{% endif %}>{{ 'collections.sorting.price_descending' | t }}</option>
+<option value="created-descending" {% if collection.sort_by contains 'created-descending' %}selected="selected"{% endif %}>{{ 'collections.sorting.date_descending' | t }}</option>
+<option value="created-ascending" {% if collection.sort_by contains 'created-ascending' %}selected="selected"{% endif %}>{{ 'collections.sorting.date_ascending' | t }}</option>
+</select>
+
+
+
+{% comment %}
+  Toggle between collection.liquid and collection.list.liquid with the
+  ?view= parameter.
+
+<div class="collection-view">
+  <button type="button" title="{{ 'collections.general.grid_view' | t }}" class="change-view{% unless template contains 'list' %} change-view--active{% endunless %}" data-view="grid">
+    <span class="icon-fallback-text">
+      <span class="icon icon-grid-view" aria-hidden="true"></span>
+      <span class="fallback-text">{{ 'collections.general.grid_view' | t }}</span>
+    </span>
+  </button>
+  <button type="button" title="{{ 'collections.general.list_view' | t }}" class="change-view{% if template contains 'list' %} change-view--active{% endif %}" data-view="list">
+    <span class="icon-fallback-text">
+      <span class="icon icon-list-view" aria-hidden="true"></span>
+      <span class="fallback-text">{{ 'collections.general.list_view' | t }}</span>
+    </span>
+  </button>
+</div>
+
+
+<script>
+  /*============================================================================
+    Inline JS because collection liquid object is only available
+    on collection pages and not external JS files
+  ==============================================================================*/
+  Shopify.queryParams = {};
+  if (location.search.length) {
+    for (var aKeyValue, i = 0, aCouples = location.search.substr(1).split('&'); i < aCouples.length; i++) {
+      aKeyValue = aCouples[i].split('=');
+      if (aKeyValue.length > 1) {
+        Shopify.queryParams[decodeURIComponent(aKeyValue[0])] = decodeURIComponent(aKeyValue[1]);
+      }
+    }
+  }
+
+  $(function() {
+    $('#filter-drp')
+      .val('{{ collection.sort_by | default: collection.default_sort_by }}')
+      .bind('change', function() {
+        Shopify.queryParams.sort_by = jQuery(this).val();
+        location.search = jQuery.param(Shopify.queryParams);
+      }
+    );
+  });
+  
+  
+$(window).load(function(){
+$("#heapbox_filter-drp .heapOptions li a").each(function(index, element) {
+      $(this).click(function(){
+        $("#heapbox_filter-drp .holder").text($(this).attr("rel"));
+         Shopify.queryParams.sort_by = $(this).attr("rel");
+         location.search = jQuery.param(Shopify.queryParams);
+      });
+  });
+  var search_str = location.search;
+  var search = search_str.search("sort_by=");
+  if(search != -1 ){
+    var sort_title = search_str.substring(search_str.indexOf("y=") + 2);
+    $("#heapbox_filter-drp .holder").html(sort_title);
+  }
+});
+
+
+</script>
+{% endcomment %}

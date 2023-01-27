@@ -1,0 +1,202 @@
+<!-- /templates/search.liquid -->
+{% comment %}
+
+  To return only products or pages in results:
+    - http://docs.shopify.com/manual/configuration/store-customization/return-only-product-in-storefront-search-results
+    - Or manually add type=product or type=page to the search URL as a parameter
+
+{% endcomment %}
+
+{% comment %}
+  Set grid_results to true and set search results as a grid instead of a list.
+  This works well when your search is only for products.
+{% endcomment %}
+{% assign grid_results = false %}
+
+{% comment %}
+  Check to enforce respond.js
+{% endcomment %}
+{% assign respond_js_secret_key = shop.domain | md5 %}
+{% unless search.terms == respond_js_secret_key %}
+
+{% comment %}
+  Avoid accessing search.results before the opening paginate tag.
+  If you do, the pagination of results will be broken.
+{% endcomment %}
+
+ <!--======  #PAGE BANNER  ======-->
+ <div id="page_banner" style="{% if section.settings.image != blank %}background:url({{ section.settings.image | img_url : 'master' }}) center;{% else %}background:url({{ 'banner_image.png' | asset_url }}) center;{% endif %} background-size:cover;">    
+   <div class="container">
+      <div class="banner_caption">         
+        <h3>Search</h3>
+        {% include 'breadcrumb' %}
+      </div>
+    </div>
+</div> 
+
+<div class="search_page">
+ <!--======  #SEARCH RESULT  ======-->   
+
+    <div id="search_result">
+    	<div class="container">
+        	<div class="results">
+                {% if search.performed %}
+                  {% if search.results_count == 0 %}
+                  <h6><span>{{ 'general.search.no_results_html' | t: terms: search.terms }}</span></h6>
+                  {% if canonical_url contains 'type=product' %}  
+                  	{% include 'search-bar' with 'search-product' %}                	
+                  {% elsif canonical_url contains 'type=article' %}
+                  	{% include 'search-bar' with 'search-article' %}
+                  {% else %}
+                 	 {% include 'search-bar' with 'search' %}
+                  {% endif %}	  
+
+                  {% else %}
+                  <h6><span>{{ 'general.search.results_for_html' | t: terms: search.terms }}</span></h6>
+
+                  {% endif %}
+              {% else %}
+                <h6><span>{{ 'general.search.title' | t }}</span></h6>
+                  {% if canonical_url contains 'type=product' %}  
+                  {% include 'search-bar' with 'search-product' %}                	
+                  {% elsif canonical_url contains 'type=article' %}
+                  {% include 'search-bar' with 'search-article' %}
+                  {% else %}
+                  {% include 'search-bar' with 'search' %}
+                  {% endif %}	 
+
+              		
+              {% endif %}
+              
+            	
+            </div>
+        </div>
+    </div>
+
+
+ {%  paginate search.results by section.settings.search_pagination_limit %}    
+    <!--======  #PRODUCT LIST  ============-->      
+    {% if search.performed %} 
+      {%  if search.results_count > 0  %}
+      <div id="collection">
+        <div class="container">  
+        
+          <div class="product_list grid"> 
+            {% for item in search.results %}
+            {% if item.object_type == 'product' %}
+			{% assign product = item  %}
+            
+            {% include 'product-grid-item' %}
+
+            {% endif %}
+
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+
+      <div id="blog">
+        <div class="container">
+         
+          <div class="blog_list">
+            <div class="grid">
+              {% for item in search.results %}
+              {% if item.object_type == 'article' %}
+              	{% include 'article-grid-item' %}
+              {% endif %}
+              {% endfor %}
+            </div>
+          </div>       
+        </div>  
+      </div>
+
+      <div class="container" id="page">
+		
+        {% for item in search.results %}
+        {% if item.object_type == 'page' %}	
+        <div class="content">
+          <h5>{{ item.title | link_to: item.url }}</h5>	
+          <p>{{ item.content | strip_html | truncatewords: 30 }}</p>		
+        </div>
+        {% endif %}
+        {% endfor %}
+
+      </div>	
+
+      {% endif %}
+
+
+	{%  endif %}
+
+{% if paginate.pages > 1 %}
+<div class="pagination-wrapper">
+  {% include 'pagination' %}
+</div>
+{% endif %}
+
+ {% endpaginate %}
+{% else %}
+  {% include 'respond' %}
+  {% layout none %}
+{% endunless %}
+</div>
+<!--======  #PRODUCT PAGINATION  ============-->    
+
+
+
+{% schema %}
+  {
+    "name": "Search Page",
+    "settings": [
+	  {
+		"type":"image_picker",
+		"id":"image",
+		"label":"Banner Image",
+		"info": "Maximum image dimensions are  1920px wide by 278px high. The uploaded file will be resized to fit within those constraints."
+	  },
+      {
+        "type": "select",
+        "id": "search_pagination_limit",
+        "label": "Number Of Search Items Per Page",
+        "options": [
+          {
+            "value": "48",
+            "label": "48"
+          },
+          {
+            "value": "36",
+            "label": "36"
+          },
+          {
+            "value": "24",
+            "label": "24"
+          },
+          {
+            "value": "18",
+            "label": "18"
+          },
+          {
+            "value": "12",
+            "label": "12"
+          },
+          {
+            "value": "9",
+            "label": "9"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          }
+        ],
+        "default": "12"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

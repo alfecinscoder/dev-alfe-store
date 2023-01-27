@@ -1,0 +1,178 @@
+ <!--======  HOME SLIDER  ======-->
+{% if section.blocks.size > 0 %}
+
+<div id="banner_slider" class="vh_height100" data-section-id="{{ section.id }}" data-section-type="slideshow-section" data-transition="{{ section.settings.slider_home_transition }}" data-autoplay="{{ section.settings.slideshow_auto }}" data-speed="{{ section.settings.slider_home_rate }}" data-show-dots="{{ section.settings.slider_home_show_dots }}" data-show-nav="{{section.settings.slider_home_show_nav}}">
+  
+ <ul class="bxslider" id="bxslider_slider_{{ section.id }}" >  
+  
+     {% for block in section.blocks %}
+   
+   		  {% if block.settings.image != blank %}	
+   			   <li  style="background: url({{ block.settings.image | img_url: '2048x' }}) 50% 50%; background-size:cover;" {{ block.shopify_attributes }}> 
+                   <div class="container">
+                     <div class="caption_box">
+                       
+                       <a href="{{ block.settings.link  }}" class="caption caption_left">
+                         
+                        {% if  block.settings.title != blank %}<h2 {% if block.settings.title_color != blank %}style="color:{{ block.settings.title_color }}"{% endif %}>{{ block.settings.title }}</h2>{% endif %}
+                       
+                         <div class="btn--quidel">{{ block.settings.button_name  }}</div>
+                       </a>
+                     </div>  
+                   </div>  
+                 </li>    
+			 {% else %}
+   				
+   
+   			<li style="background:url({{ 'slider-placeholder.png' | asset_url }}) no-repeat 50% 50%; background-size:cover;" {{ block.shopify_attributes }}>
+    		<div class="container">
+             <div class="caption_box"> 
+              <a href="/" class="caption caption_left"> 
+                <h2>Lorem ipsum dolor sit amet</h2> 
+                <div class="btn--quidel"> SHOP NOW</div>
+               </a>
+              </div>
+            </div>
+    	</li>
+   
+             {% endif %}
+       {% endfor %}
+
+  </ul>
+    
+</div>
+ {% endif %}
+
+
+
+{% schema %}
+  {
+    "name": "Slideshow",
+    "max_blocks": 6,	
+	"settings": [
+	 {
+      "type": "select",
+      "id": "slider_home_transition",
+      "label": "Transition Effect",
+      "options": [
+        {
+          "value": "fade",
+          "label": "Fade"
+        },
+        {
+          "value": "horizontal",
+          "label": "Slide"
+        }
+      ]
+    },
+	{
+      "type": "checkbox",
+      "id": "slider_home_show_dots",
+      "label": "Show Pager"
+    },
+	{
+      "type": "checkbox",
+      "id": "slider_home_show_nav",
+      "label": "Show Controls"
+    },
+	 {
+        "type": "checkbox",
+        "id": "slideshow_auto",
+        "label": "Slideshow Automatically"
+      },
+      {
+      "type": "select",
+      "id": "slider_home_rate",
+      "label": "Change Slides Every",
+	  "options": [
+        {
+          "value": "3000",
+          "label": "3 seconds"
+        },
+        {
+          "value": "4000",
+          "label": "4 seconds"
+        },
+        {
+          "value": "5000",
+          "label": "5 seconds"
+        },
+        {
+          "value": "7000",
+          "label": "7 seconds"
+        },
+        {
+          "value": "10000",
+          "label": "10 seconds"
+        },
+        {
+          "value": "15000",
+          "label": "15 seconds"
+        }
+      ]
+    }
+
+	],
+ "blocks": [
+    {
+      "type": "image",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+		
+		{
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+		{
+          "type":"color",
+          "id":"title_color",
+          "label":"Title color"
+		},
+		{
+          "type": "text",
+          "id": "button_name",
+          "label": "Button Name"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+ "presets": [
+    {
+      "name": "Slideshow",
+      "category": "Image",
+      "settings": {
+		 "slider_home_show_dots": true,
+		"slider_home_show_nav": true,
+        "slideshow_auto": true,
+         "slider_home_rate": "7000",
+        "slider_home_transition": "fade"
+      },
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

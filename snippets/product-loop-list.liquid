@@ -1,0 +1,37 @@
+<div class="grid__item one-whole wow fadeIn" data-wow-delay="300ms" data-wow-offset="200"> 
+  <div class="product_item"> 
+    <div class="grid">
+
+      <div class="grid__item two-tenths max-large--three-tenths medium-large--three-tenths medium--three-sixths small--one-whole">              	
+        <div class="product_img">
+          <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+        </div>                      
+      </div>
+
+      <div class="grid__item seven-tenths medium--three-sixths small--one-whole">
+        <div class="product_detail_info">
+          <h6 class="pd_title">  <a href="{{ product.url | within: collection }}">{{ product.title }}</a></h6>                                   	                                                                                                                             
+          <div class="price_review">
+            <h6 class="pd_price">{{ product.price | money }}</h6> 
+           
+          </div>
+          <p> {{ product.description | strip_html | truncatewords: 60 }}</p>
+          <div class="product_variant">                     
+            <div class="AddToCart-wrapper">
+              <a href="{{ product.url | within: collection }}">
+                <button  value="view detail" class="btn--small btn--primary" name="add"> 
+                  view details
+                </button>
+              </a>
+            </div>                  
+
+            {% if settings.enable_wishlist %}
+            {% include 'wishlist-product' with 'view_list' %}
+            {% endif %}
+
+          </div>  
+        </div>                  	
+      </div>	
+    </div>
+  </div>
+</div>

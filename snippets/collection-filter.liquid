@@ -1,0 +1,192 @@
+{% assign tags_selected = current_tags | handleize %}
+<div class="filter_options wow fadeIn" data-wow-delay="400ms">  
+  <div class="container">
+    <div class="filter_header">
+      <div class="grid">	
+      {% if settings.enable_filter %}   
+        <div class="grid__item two-twelfths filter_section">
+          <div class="filter-icon">
+            <i class="fa fa-sliders" aria-hidden="true"></i>
+          </div> 
+          <span class="clear_all mobileclear">clear all</span>
+          <button class="btn--primary btn--small apply_filter">Apply</button>
+        </div>
+		{% endif %}
+        <div class="grid__item  {% if settings.enable_filter %}ten-twelfths{% else %}one-whole{% endif %}">
+          <div class="sort_product">            
+
+            {% if settings.display_grid_list_view %}
+            <div class="collection-view">
+              <!--<label>view as :</label>-->
+              <a  title="Grid view" class="change-view {% unless template contains 'list' %} active {% endunless %}" data-view="grid">
+                <i class="fa fa-th"></i>            
+              </a>
+              <a  title="List view" class="change-view {% if template contains 'list' %} active {% endif %}" data-view="list">
+                <i class="fa fa-bars"></i>               
+              </a>
+            </div>
+            {% endif %}
+
+            {% if settings.enable_sorting_filter %} 
+            <div class="sort_by filter_item">
+              <span>sort by : </span>
+              {% include 'collection-sorting' %}
+            </div> 
+            {% endif %}
+          </div>
+        </div>        
+      </div>
+    </div>  
+    {% if settings.enable_filter %}
+     <div class="product-filter">
+      <div class="grid" id="mobile_filter">
+        
+        <ul class="mobile_filter_tab">
+          <li><a href="#gender">{{ settings.filter_gender_title }}</a></li>
+          <li><a href="#categories">{{ settings.categories_title }}</a></li>
+          <li><a href="#price">{{ settings.filter_price_title }}</a></li>
+          <li><a href="#color">{{ settings.filter_color_title }}</a></li>
+          <li><a href="#vendor">{{ settings.vendor_title }}</a></li>          
+        </ul>
+        
+        {% if settings.enble_gender_filter %}
+        <div id="gender" class="grid__item large-down--one-fifth filter-option-item medium--one-quarter small--one-whole medium-large--one-fifth">
+          <h6>{{ settings.filter_gender_title }}</h6>          
+          <ul class="sidebar-tag">      
+           {% assign  gender_tag_lists = settings.filter_gender_taglist | split: ','  %}
+              {% for tag_name in gender_tag_lists %}
+
+              {% assign tag_value = tag_name | handleize %}
+              {% assign flag = false %}
+              {% for tag in current_tags %}
+              {% if tag == tag_value %}
+              {% assign flag = true %}
+              {% endif %}
+              {% endfor %}
+            <li>
+              {% assign gender_link = link.url | remove: "/" %}
+              <input type="radio" id="{{tag_value}}" value="{{tag_value}}" name="filter_gender" {% if flag %} checked="checked"{% endif %}/>
+              <label for="{{tag_value}}"><span></span>{{ tag_name }}</label>
+            </li>                 
+            {% endfor %}
+          </ul>     
+        </div>
+        {% endif %}
+        
+        
+       {% if settings.enble_categories %}  
+        <div id="categories" class="grid__item large-down--one-fifth filter-option-item medium--one-quarter small--one-whole medium-large--one-fifth">
+        <h6>{{ settings.categories_title }}</h6>	
+        <ul class="sidebar-tag">
+          {% assign coll_handle = collection.handle %}
+          {% assign typeList = ',' %}
+          {% for product in collections[coll_handle].all_products %}
+          {% capture sizeCheck %}{{typeList | size}}{% endcapture %}
+          {% if sizeCheck == '1' %}
+          {% capture temp %},{{product.type}},{% endcapture %}
+          {% assign typeList = temp %}
+         	 <li>
+               <input type="radio" id="{{product.type}}" value="{{product.type}}" name="filter_category" {% if tags_selected contains product.type %} checked="checked"{% endif %}/>
+               <label for="{{product.type}}"><span></span>{{ product.type | replace : '-', ' ' }}</label>
+          </li>
+          {% else %}
+          {% capture compareType %},{{product.type}},{% endcapture %}
+          {% capture compareListSize %}{{typeList | replace: compareType, '' | size }}{% endcapture %}
+          {% capture typeListSize %}{{typeList | size}}{% endcapture %}
+          {% if compareListSize == typeListSize %}
+            <li>
+              <input type="radio" id="{{product.type}}" value="{{product.type}}" name="filter_category" {% if tags_selected contains product.type %} checked="checked"{% endif %}/>
+              <label for="{{product.type}}"><span></span>{{ product.type | replace : '-', ' ' }}</label>
+            </li>
+          {% capture tempList %}{{typeList}}{{product.type}},{% endcapture %}
+          {% assign typeList = tempList %}
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+          </ul>
+        </div>
+     {% endif %}
+        
+       	{% if settings.enble_price_filter %} 
+      	<div id="price" class="grid__item large-down--one-fifth filter-option-item medium--one-quarter small--one-whole medium-large--one-fifth">
+        	<h6>{{ settings.filter_price_title }}</h6>
+        	<ul class="sidebar-tag">
+              
+              {% assign  price_tag_lists = settings.filter_price_taglist | split: ','  %}
+              {% for tag_name in price_tag_lists %}
+
+              {% assign tag_value = tag_name | handleize %}
+              {% assign flag = false %}
+              {% for tag in current_tags %}
+              {% if tag == tag_value %}
+              {% assign flag = true %}
+              {% endif %}
+              {% endfor %}
+               <li>
+                 <input type="checkbox" id="{{tag_value}}" value="{{tag_value}}" name="filter_price" {% if flag %} checked="checked"{% endif %}/>
+                 <label for="{{tag_value}}"><span></span>{{ tag_name }}</label>
+               </li>  
+              {% endfor %} 
+             </ul>
+        </div> 
+        {% endif %}
+        
+        {% if settings.enble_color_filter %}
+        <div id="color" class="grid__item large-down--one-fifth filter-option-item medium--one-quarter small--one-whole medium-large--one-fifth">
+        	 <h6>{{ settings.filter_color_title }}</h6>          
+         	 <ul class="sidebar-tag">      
+             {% assign  color_tag_lists = settings.filter_color_taglist | split: ','  %}
+              {% for tag_name in color_tag_lists %}
+
+              {% assign tag_value = tag_name | handleize %}
+              {% assign flag = false %}
+              {% for tag in current_tags %}
+              {% if tag == tag_value %}
+              {% assign flag = true %}
+              {% endif %}
+              {% endfor %}
+               <li>
+                 <input type="checkbox" id="{{tag_value}}" value="{{tag_value}}" name="filter_color" {% if flag %} checked="checked"{% endif %}/>
+                 <label for="{{tag_value}}"><span></span>{{ tag_name }}</label>
+               </li>  
+              {% endfor %} 
+          </ul>     
+        </div>
+        {% endif %}
+        
+        {% if settings.enble_brand_filter %}
+        <div id="vendor" class="grid__item large-down--one-fifth filter-option-item medium--one-quarter small--one-whole medium-large--one-fifth">
+          {% assign coll_handle = collection.handle %}
+          <h6>{{ settings.vendor_title }}</h6>     
+          <ul class="sidebar-tag">
+            {% assign vendor_list = '' %}
+            {% for product in collections[coll_handle].products %}
+             {% if vendor_list contains product.vendor %}
+            {% else %}
+            {% assign vendor_hand = product.vendor | handleize %}
+            <li>
+              <input type="checkbox" id="{{vendor_hand}}" value="{{vendor_hand}}" name="filter_brand" {% if tags_selected contains vendor_hand %}checked="checked"{% endif %}/>
+              <label for="{{vendor_hand}}"><span></span>{{ vendor_hand | replace: '-',' ' }}</label>                   
+            </li> 
+            {% capture temp %}{{ vendor_list }}{{ product.vendor  }}{% endcapture %}{% assign vendor_list = temp %}
+            {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        
+        
+      </div>
+    </div>
+    {% endif %}
+    
+   {% if settings.enable_filter %}     
+    <div class="filter_tags one-whole">
+      <div class="tag_list">
+        <div class="selected_tag" style="{% if current_tags == blank %}display:none;{% else %}display:block;{% endif %}"></div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>  
+

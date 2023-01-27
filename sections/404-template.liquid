@@ -1,0 +1,118 @@
+<!-- /templates/404.liquid -->
+<div class="page_content_404" style=" background:url({% if section.settings.image != blank %}{{ section.settings.image | img_url : 'master' }}{% else %}{{ 'password-image.png' | asset_url }}{% endif %}) center no-repeat;">
+  <div class="error-content">        
+    <div class="brand-name">
+       {% if section.settings.logo_use_image %}
+          <a href="/" itemprop="url">
+            {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
+            <img src="{{ section.settings.logo | img_url: image_size }}"
+                 srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+                 alt="{{ section.settings.logo.alt | default: shop.name }}"
+                 itemprop="logo">
+          </a>
+
+      {% endif %}
+    </div>
+    <div class="error_msg">     
+      <h1>{{ section.settings.title }}</h1>
+      <h6>{{ section.settings.sub_title }}</h6>
+      
+       <p>{{ section.settings.description_note }}</p>
+      <a href="/" class="btn--primary" title="">back to Home Page</a>
+    </div>
+    
+    {% if section.settings.enable_404_sociallink %}
+    <div class="bottom_social">
+      {% if settings.facebook_link != blank %}
+      <a href="{{ settings.facebook_link }}" class="facebook" target="_blank"><span><i class="fa fa-facebook"></i></span></a>
+      {% endif %}
+  	  {% if settings.twitter_link != blank %}
+      <a href="{{ settings.twitter_link }}" class="twitter" target="_blank"><span><i class="fa fa-twitter"></i></span></a>
+      {% endif %}
+  	  {% if settings.instagram_link != blank %}
+      <a href="{{ settings.instagram_link }}" class="instagram" target="_blank"><span><i class="fa fa-instagram"></i></span></a>
+      {% endif  %}
+  	  {% if settings.pinterest_link != blank %}
+      <a href="{{ settings.pinterest_link }}" class="pinterest" target="_blank"><span><i class="fa fa-pinterest-p"></i></span></a>
+      {% endif %}
+  	  {% if settings.youtube_link != blank %}
+      <a href="{{ settings.youtube_link }}" class="youtube" target="_blank"><span><i class="fa fa-youtube-play"></i></span></a>
+      {% endif  %}
+  	  {% if settings.google_link != blank %}
+      <a href="{{ settings.google_link }}" class="google_play" target="_blank"><span><i class="fa fa-google"></i></span></a>
+      {% endif %}
+      {% if settings.vimeo_link != blank %}
+      <a href="{{ settings.vimeo_link }}" class="vimeo" target="_blank"><span><i class="fa fa-vimeo"></i></span></a>
+      {% endif %}
+      {% if settings.tumblr_link != blank %}
+      <a href="{{ settings.tumblr_link }}" class="tumblr" target="_blank"><span><i class="fa fa-tumblr"></i></span></a>
+      {% endif  %}
+    </div>
+  	{% endif %}
+  </div>
+</div>
+
+
+
+{% schema %}
+   {
+    "name": "404 Page",
+    "settings": [
+	{
+        "type": "header",
+        "content": "Logo"
+      },
+      {
+        "type": "checkbox",
+        "id": "logo_use_image",
+        "label": "Use Custom Logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Custom Logo"
+      },
+      {
+        "type": "text",
+        "id": "logo_max_width",
+        "label": "Custom logo width (in pixels)",
+        "default": "450"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Background Image"
+      },
+      {
+        "type":"text",
+        "id":"title",
+        "label":"Heading Text",
+		"default":"404"
+      },
+      {
+        "type":"text",
+        "id":"sub_title",
+        "label":"Sub Title",
+		"default":"OPPS! THIS PAGE CAN NOT BE FOUND"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_404_sociallink",
+        "label": "Enable Social Sharing",
+        "default": true
+      },
+	  {
+        "type": "textarea",
+        "id": "description_note",
+        "label": "Description Note",
+        "default": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using."
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

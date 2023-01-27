@@ -1,0 +1,114 @@
+   <!--======  #PRODUCT CATEGORIES  ======-->
+{% if section.blocks.size > 0 %}
+<div id="categories">
+      <div class="grid">
+   
+     {% for block in section.blocks %}
+        
+         {% assign speed = forloop.index | times:100 %} 
+         {% if block.settings.image != blank %}
+            <div class="grid__item one-third wow fadeIn" data-wow-delay="{{speed}}ms">
+                   <a href="{{collections[block.settings.featured_collection].url}}" class="categories_item">
+                        <div class="categories_img">
+                          <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ collections[block.settings.featured_collection].title }}">
+                        </div>
+                        <div class="categories_info">
+                          <div class="categories_content">
+                            <h3>{{ collections[block.settings.featured_collection].title }}</h3>
+                            <p>{{ collections[block.settings.featured_collection].description  | truncatewords: 10  }}</p>
+                            <div class="btn--secondary btn--small">
+                              {{ section.settings.button_name }}
+                            </div>
+                          </div>
+                        </div>      
+                    </a>
+               	</div>
+          {% else %}
+                <div class="grid__item one-third wow fadeIn" data-wow-delay="{{speed}}ms">
+                   <a href="/" class="categories_item">
+                        <div class="categories_img">
+                          {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                          {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                     </div>
+                        <div class="categories_info">
+                          <div class="categories_content">
+                            <h3>Collection</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do...</p>
+                            <div class="btn--secondary btn--small">
+                             	Shop Now
+                            </div>
+                          </div>
+                        </div>      
+                    </a>
+                 </div>
+             {% endif %}		
+        
+          {% endfor %}
+         
+        </div>
+    </div> 
+
+{% endif %}
+
+
+{% schema %}
+   {
+    "name": "Collection List",
+	 "max_blocks": 3,
+    "settings": [
+		{
+        "type": "text",
+        "id": "button_name",
+        "label": "Button Name"
+        }
+	],
+
+    "blocks": [
+    {
+      "type": "image",
+      "name": "Collection",
+    "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+		
+        },
+       	{
+			"type":"collection",
+			"id":"featured_collection",
+			"label":"Choose Collection"
+		}
+        
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection List",
+      "category": "Collection",
+      "settings": {
+      },
+      "blocks": [
+        {
+          "type": "image"
+        },
+		{
+          "type": "image"
+        },
+		{
+          "type": "image"
+        }
+	
+      ]
+    }
+  ]
+}
+ 
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

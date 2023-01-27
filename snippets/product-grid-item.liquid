@@ -1,0 +1,87 @@
+<!-- /snippets/product-grid-item.liquid -->
+
+{% unless grid_item_width %}
+
+{% if template == 'list-collections' or template == 'index' or template == 'search' %}
+  {% assign grid_item_width = 'one-quarter medium--one-half small--one-whole' %}
+{% endif %}
+
+{% if template == 'collection' or template == 'product' %}
+ 
+  {% if section.settings.products_per_row == '3' %}
+  {% assign grid_item_width = 'four-twelfths small--one-whole medium--one-half medium-large--four-twelfths' %}
+  {% endif %}
+
+  {% if section.settings.products_per_row == '4' %}
+  {% assign grid_item_width = 'three-twelfths small--one-whole medium--one-half medium-large--four-twelfths' %}
+  {% endif %}
+
+  {% if section.settings.products_per_row == '5' %}
+  {% assign grid_item_width = 'two-tenths small--one-whole medium--one-half medium-large--four-twelfths' %}
+  {% endif %}
+
+{% endif %}
+{% endunless %}
+
+
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+  {% assign on_sale = true %}
+{% endif %}
+
+
+{% assign sold_out = true %}
+{% if product.available %}
+  {% assign sold_out = false %}
+{% endif %}
+
+{% unless template == 'index' %}
+  {% assign speed = forloop.index | times:100 %}
+   <div class="grid__item {{ grid_item_width }} wow fadeIn" data-wow-delay="{{speed}}ms">
+  {% endunless %}	 
+  <div class="product_item">  
+      {% if on_sale %}
+      {% if product.price_varies %}
+      {% assign sale_price = product.price | money %}
+
+      <div class="sale_tag"> {{ 'products.product.on_sale' | t }}</div>
+      <div class="price"><span>From</span> {{ product.price | money }}</div>    
+      {% else %}
+      <div class="sale_tag">{{ 'products.product.on_sale' | t }}</div>
+      <div class="price"> {{ product.price | money }}
+        <span class="compare">{{ product.compare_at_price | money }}</span></div>
+      {% endif %}
+
+      {% else %} 
+      <div class="price">{{ product.price | money }}</div>
+      {% endif %}
+
+      {% if sold_out %}
+      <div class="sale_tag">{{ 'products.product.sold_out' | t }}</div>
+      {% endif %}  
+
+      <div class="product_img">
+        <a href="{{ product.url | within: collection }}">
+          <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}" onclick="myFunction()">
+        </a>
+      </div>    
+      <div class="product_info">
+        <div class="one-whole medium-large--nine-tenths medium--seven-eighths">       
+          <h1><a href="{{ product.url | within: collection }}" id="product-title">{{ product.title }}</a></h1>
+          <div class="view_btn"><a href="{{ product.url | within: collection }}">view details</a></div>
+        </div>  
+        {% if settings.enable_wishlist %}
+        {% include 'wishlist-product' with 'view_grid' %}  
+        {% endif %}
+      </div>
+      <div class="border_effect"></div> 
+
+  </div>
+     
+
+{% unless template == 'index' %}     
+</div>
+{% endunless %}
+
+
+

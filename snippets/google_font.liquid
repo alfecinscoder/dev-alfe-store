@@ -1,0 +1,62 @@
+  <!-- Navigation font -->
+  {% assign google_font_url = '' %}
+
+  {% if settings.btn_banner_custom_font != blank %}
+  {% assign words = settings.btn_banner_custom_font | split: ',' %}
+  {% assign google_font_url = google_font_url | append: '|' | append: words.first | replace: ' ', '+' | replace: "'", '' | append: ':400,400italic,500,500italic,700,700italic,900,900italic,300,300italic' %}
+  {% endif %}
+
+  {% if google_font_url != blank %}
+  {{ google_font_url | remove_first : '|' | prepend: '//fonts.googleapis.com/css?family=' | stylesheet_tag }}
+  {% endif %}
+  
+  
+  <!-- Body font -->
+  {% assign google_font_url = '' %}
+  
+  {% if settings.body_custom_font != blank %}
+  {% assign words = settings.body_custom_font | split: ',' %}
+  {% assign google_font_url = google_font_url | append: '|' | append: words.first | replace: ' ', '+' | replace: "'", '' | append: ':400,400italic,500,500italic,700,700italic,900,900italic,300,300italic' %}
+  {% endif %}
+
+  {% if google_font_url != blank %}
+  {{ google_font_url | remove_first : '|' | prepend: '//fonts.googleapis.com/css?family=' | stylesheet_tag }}
+  {% endif %}
+
+  <!-- heading font -->
+  {% assign google_font_url = '' %}
+  
+  {% if settings.heading_custom_font != blank %}
+  {% assign words = settings.heading_custom_font | split: ',' %}
+  {% assign google_font_url = google_font_url | append: '|' | append: words.first | replace: ' ', '+' | replace: "'", '' | append: ':400,400italic,500,500italic,700,700italic,900,900italic,300,300italic' %}
+  {% endif %}
+
+  {% if google_font_url != blank %}
+  {{ google_font_url | remove_first : '|' | prepend: '//fonts.googleapis.com/css?family=' | stylesheet_tag }}
+  {% endif %}
+  
+  
+    <!-- header font -->
+  {% assign google_font_url = '' %}
+  
+  {% if settings.header_custom_font != blank %}
+  {% assign words = settings.header_custom_font | split: ',' %}
+  {% assign google_font_url = google_font_url | append: '|' | append: words.first | replace: ' ', '+' | replace: "'", '' | append: ':400,400italic,500,500italic,700,700italic,900,900italic,300,300italic' %}
+  {% endif %}
+
+  {% if google_font_url != blank %}
+  {{ google_font_url | remove_first : '|' | prepend: '//fonts.googleapis.com/css?family=' | stylesheet_tag }}
+  {% endif %}
+  
+  
+     <!-- footer font -->
+  {% assign google_font_url = '' %}
+  
+  {% if settings.footer_custom_font != blank %}
+  {% assign words = settings.footer_custom_font | split: ',' %}
+  {% assign google_font_url = google_font_url | append: '|' | append: words.first | replace: ' ', '+' | replace: "'", '' | append: ':400,400italic,500,500italic,700,700italic,900,900italic,300,300italic' %}
+  {% endif %}
+
+  {% if google_font_url != blank %}
+  {{ google_font_url | remove_first : '|' | prepend: '//fonts.googleapis.com/css?family=' | stylesheet_tag }}
+  {% endif %}

@@ -1,0 +1,717 @@
+{
+  "current": {
+    "color_primary": "#333333",
+    "color_secondary": "#cab901",
+    "nav_text_color": "#ababab",
+    "color_text_body": "#333",
+    "color_text_secondary": "#999999",
+    "color_body_bg": "#fff",
+    "nav_color": "#252525",
+    "color_body_secondary": "#f2f2f2",
+    "footer_bg_color": "#e5e5e5",
+    "border_color_darken": "#e5e5e5",
+    "border_color_light": "#cccccc",
+    "disable_color": "#f6f6f6",
+    "error_color": "#d02e2e",
+    "success_color": "#56ad6a",
+    "body_font": "Helvetica, Arial, sans-serif",
+    "body_custom_font": "'Roboto', sans-serif",
+    "font_size_body": "14",
+    "heading_font": "Helvetica, Arial, sans-serif",
+    "heading_custom_font": "'Roboto', sans-serif",
+    "btn_banner_font": "Helvetica, Arial, sans-serif",
+    "btn_banner_custom_font": "'Roboto', sans-serif",
+    "font_footer": "Helvetica, Arial, sans-serif",
+    "footer_custom_font": "'Roboto', sans-serif",
+    "footer_size": "14",
+    "favicon": "",
+    "header_menu": "my-navigation",
+    "megadropdown_link": "Shop",
+    "mega_1_show": true,
+    "mega_1_links": "",
+    "mega_2_show": true,
+    "mega_2_links": "",
+    "mega_3_show": true,
+    "mega_3_links": "",
+    "mega_4_show": false,
+    "mega_4_links": "",
+    "mega_5_show": false,
+    "mega_5_links": "",
+    "shop_megadropdown_link": "Collections",
+    "mega_shop_1_image": "",
+    "mega_shop_1_show": "",
+    "mega_shop_2_image": "",
+    "mega_shop_2_show": "",
+    "mega_shop_3_image": "",
+    "mega_shop_3_show": "",
+    "mega_shop_4_image": "",
+    "mega_shop_4_show": "",
+    "mega_shop_5_image": "",
+    "mega_shop_5_show": "",
+    "newsletter_form_action": "\/\/planetx.us8.list-manage.com\/subscribe\/post?u=3833ce08f165fe81039e703ff&amp;id=bf7eef9782",
+    "customer_banner": "",
+    "page_banner": "",
+    "enable_social_links": true,
+    "facebook_link": "https:\/\/www.facebook.com\/shopify",
+    "twitter_link": "https:\/\/twitter.com\/shopify",
+    "pinterest_link": "https:\/\/pinterest.com\/shopify",
+    "google_link": "",
+    "instagram_link": "https:\/\/instagram.com\/shopify",
+    "vimeo_link": "",
+    "youTube_link": "",
+    "tumblr_link": "",
+    "product_sharing": true,
+    "blog_sharing": true,
+    "blog_sharing_title": "Tags",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "linked_share": true,
+    "share_google": true,
+    "enable_wishlist": false,
+    "enable_product_image_zoom": true,
+    "ajax_cart_enable": true,
+    "display_grid_list_view": true,
+    "enable_sorting_filter": true,
+    "enable_filter": false,
+    "enble_categories": false,
+    "categories_title": "Categories",
+    "enble_price_filter": false,
+    "filter_price_title": "",
+    "filter_price_taglist": "",
+    "enble_color_filter": false,
+    "filter_color_title": "",
+    "filter_color_taglist": "",
+    "enble_brand_filter": false,
+    "vendor_title": "",
+    "enble_gender_filter": false,
+    "filter_gender_title": "",
+    "filter_gender_taglist": "",
+    "enable_blog_sidebar": true,
+    "blog_search_enable": true,
+    "blog_enable_categories": true,
+    "category_title": "Categories",
+    "blog_choose_menu": "",
+    "latest_blog_enable": true,
+    "latest_blog_title": "LATEST BLOG POSTS",
+    "post_tag_enable": true,
+    "post_tag_title": "Post Tags",
+    "enable_rss_field": true,
+    "newsletter_enable": true,
+    "newsletter_sub_title": "enter your email and get",
+    "popup_newsletter_title": "20% off",
+    "popup_descrition": "your first purchase",
+    "newsbanner_img": "",
+    "enable_newsletter_social": true,
+    "show_multiple_currencies": true,
+    "currency_format": "money_format",
+    "supported_currencies": "EUR GBP CAD AUD",
+    "default_currency": "USD",
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#cab901",
+    "checkout_button_color": "#cab901",
+    "checkout_error_color": "#ff6d6d",
+    "nav_promo_image": true,
+    "nav_promo_link": "shopify:\/\/collections\/all",
+    "enable_password_sociallink": true,
+    "customer_banner_enble": true,
+    "page_enble": true,
+    "wishlist_banner_enble": true,
+    "cart_banner_enble": true,
+    "cart_notes_enable": true,
+    "cart_vendor_enable": false,
+    "collection_banner": true,
+    "blog_banner_enble": true,
+    "search_banner_enble": true,
+    "checkout_use_header_image": false,
+    "checkout_logo": "checkout_logo.png",
+    "checkout_use_body_background_image": false,
+    "checkout_use_sidebar_background_image": false,
+    "review_enable": true,
+    "testimonials_enable": true,
+    "testimonials_title": "WHAT DO YOU THINK",
+    "author_1": true,
+    "testi_name_1": "John Deo",
+    "tesi_per_1": "CEO & Founder Luxumbourg",
+    "testi_desc_1": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+    "author_2": true,
+    "testi_name_2": "John Deo",
+    "tesi_per_2": "CEO & Founder Luxumbourg",
+    "testi_desc_2": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+    "author_3": false,
+    "testi_name_3": "",
+    "tesi_per_3": "",
+    "testi_desc_3": "",
+    "author_4": false,
+    "testi_name_4": "",
+    "tesi_per_4": "",
+    "testi_desc_4": "",
+    "author_5": false,
+    "testi_name_5": "",
+    "tesi_per_5": "",
+    "testi_desc_5": "",
+    "shipping_enable": true,
+    "shipping_title": "FREE SHIPPING WORLDWIDE",
+    "shipping_subtitle": "Guaranteed Delivery in 4 Days",
+    "customer_enable": true,
+    "customer_title": "24\/7 CUSTOMER SERVICE",
+    "customer_subtitle": "Call Us 24\/7 At 0123456789",
+    "return_enable": true,
+    "return_title": "EASY RETURNS!",
+    "return_subtitle": "Send Within 30 Days",
+    "form_title_name": "Send Mail",
+    "enable_google_map": true,
+    "google_map_address": "150 Elgin Street, 8th Floor. Ottawa, ON, Canada. K2P 1L4",
+    "map_zoom_level": "17",
+    "search_pagination_limit": "12",
+    "show_vendor": true,
+    "compare_price_enable": true,
+    "show_quantity": true,
+    "show_next_prev_enable": true,
+    "enable_tabify": true,
+    "related_product_enable": true,
+    "related_product_title": "Related Products",
+    "collection_list_1": "bags",
+    "collection_list_2": "best-sellers",
+    "collection_list_3": "jackets",
+    "collection_list_4": "shoes",
+    "collection_list_5": "",
+    "collection_button_name": "Shop Now",
+    "products_per_row": "4",
+    "pagination_limit": "12",
+    "no_of_articles": "3",
+    "no_of_comment": "5",
+    "enable_404_sociallink": true,
+    "description_note": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using.",
+    "instagram_title": "Follow us on Instagram @hulkthemes",
+    "insta_client_id": "6b1a051df10845cabe6a843d4b557dec",
+    "insta_access_Token": "3765186637.6b1a051.9519c93bf2af406396cd912f7a42976b",
+    "insta_userid": "3765186637",
+    "insta_limit": "12",
+    "brand_title_name": "",
+    "logo_enble_1": true,
+    "brand_link_1": "\/collections\/all?constraint=buckaroo",
+    "logo_enble_2": true,
+    "brand_link_2": "\/collections\/all?constraint=carlton-london",
+    "logo_enble_3": true,
+    "brand_link_3": "\/collections\/all?constraint=hidesign",
+    "logo_enble_4": true,
+    "brand_link_4": "\/collections\/all?constraint=geox",
+    "logo_enble_5": true,
+    "brand_link_5": "\/collections\/all?constraint=faballey",
+    "blog_title": "Latest Blog",
+    "blog_1": "luxembourg",
+    "bestseller_collection": "best-sellers",
+    "collection_1": "bags",
+    "collection_2": "jackets",
+    "collection_3": "shoes",
+    "button_name": "Shop Now",
+    "home_section_1": "slideshow",
+    "home_section_2": "featured-collections",
+    "home_section_3": "featured-products",
+    "home_section_4": "brand-list",
+    "home_section_5": "featured-blogs",
+    "home_section_6": "instagram",
+    "display_slideshow": true,
+    "slideshow_animation": "slide",
+    "slide_auto": false,
+    "slideshow_speed": "1",
+    "display_slide_1": true,
+    "slide_title_1": "shoes walk the walk in total comfort.",
+    "button_text_1": "view collection",
+    "button1_link": "\/collections\/shoes",
+    "display_slide_2": true,
+    "slide_title_2": "leather bags fall of 2016 collection",
+    "button_text_2": "view collection",
+    "button2_link": "\/collections\/bags",
+    "display_slide_3": true,
+    "slide_title_3": "take $100 off spring leather jackets",
+    "button_text_3": "view collection",
+    "button3_link": "\/collections\/jackets",
+    "display_slide_4": false,
+    "slide_title_4": "",
+    "button_text_4": "",
+    "button4_link": "",
+    "display_slide_5": false,
+    "slide_title_5": "",
+    "button_text_5": "",
+    "button5_link": "",
+    "favicon_enable": true,
+    "footer_menu": "footer",
+    "footer_newsletter_enable": true,
+    "newsletter_title": "Join Our Newsletter",
+    "copyright_enble": true,
+    "copyright_description": "<span>© Copyright 2022 <\/span><span>|<\/span> Designed with <i class=\"fa fa-heart\"><\/i> by <a href=\"https:\/\/www.hulkapps.com\/\/\" target=\"_blank\" >HulkApps<\/a>",
+    "payment_method_enble": true,
+    "logo_use_image": true,
+    "logo_max_width": "450",
+    "search_icon": true,
+    "enble_login_dtail": true,
+    "enable_cart_button": true,
+    "no_found_banner_enble": true,
+    "youtube_link": "",
+    "password_title_name": "Share On:",
+    "slide_sub_title_1": "",
+    "slider_detail_1": "",
+    "slide_sub_title_2": "",
+    "slider_detail_2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+    "slide_sub_title_3": "",
+    "slider_detail_3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+    "slide_sub_title_4": "",
+    "slider_detail_4": "",
+    "slide_sub_title_5": "",
+    "slider_detail_5": "",
+    "longitude_id": "49.6075997",
+    "latitude_id": "6.1008508",
+    "product_list_banner": true,
+    "slide_4_link": "",
+    "slide_5_link": "",
+    "gender_menu": "gender",
+    "color_menu": "color",
+    "price_menu": "price",
+    "facebook_share": true,
+    "twitter_share": true,
+    "pinterest_share": true,
+    "instagram_share": true,
+    "categories_menu": "bags-filter",
+    "enble_material_filter": "0",
+    "material_menu": "",
+    "enble_type_filter": "0",
+    "type_menu": "",
+    "enable_bag_filter": true,
+    "bag_categories_menu": "bags-filter",
+    "enable_jacket_filter": false,
+    "jacket_categories_menu": "",
+    "enable_shoe_filter": false,
+    "shoe_categories_menu": "",
+    "enable_instagram": "0",
+    "instagram_client_id": "",
+    "instagram_username": "",
+    "instagram_count": "10",
+    "categories_title_1": "BAGS",
+    "categories_desc_1": "LOREM IPSUM DOLOR SIT AMET CONSECTETUR ADIPISCING ELIT.",
+    "categories_button_1": "Shop Now",
+    "categories_shop_1": "collections\/bags",
+    "categories_title_2": "JACKETS",
+    "categories_desc_2": "LOREM IPSUM DOLOR SIT AMET CONSECTETUR ADIPISCING ELIT.",
+    "categories_button_2": "Shop Now",
+    "categories_shop_2": "collections\/jackets",
+    "categories_title_3": "BOOTS",
+    "categories_desc_3": "LOREM IPSUM DOLOR SIT AMET CONSECTETUR ADIPISCING ELIT.",
+    "categories_button_3": "Shop Now",
+    "categories_shop_3": "collections\/shoes",
+    "enable_gender_filter": true,
+    "categories_enable": "1",
+    "best_seller_enable": "1",
+    "best_seller_title": "BEST SELLERS",
+    "enable_blog": "1",
+    "enable_category_filter": true,
+    "google_title": "google map",
+    "google_map_longitude": "41.0054958",
+    "google_map_latitude": "28.8720968",
+    "footer_social_enable": true,
+    "font_header": "Helvetica, Arial, sans-serif",
+    "header_custom_font": "'Raleway', sans-serif",
+    "header_size": "",
+    "mailing_list_form_action": "\/\/planetx.us8.list-manage.com\/subscribe\/post?u=3833ce08f165fe81039e703ff&amp;id=bf7eef9782",
+    "btn_color": "#666",
+    "color_borders": "#e5e5e5",
+    "color_body_text": "#333333",
+    "color_footer_bg": "#f2f2f2",
+    "color_footer_text": "#636363",
+    "color_footer_social_link": "#bbbbbb",
+    "twittercard_handle": "@",
+    "google_share": true,
+    "categories_description_1": "LOREM IPSUM DOLOR SIT AMET CONSECTETUR ADIPISCING ELIT.",
+    "categories_description_2": "LOREM IPSUM DOLOR SIT AMET CONSECTETUR ADIPISCING ELIT.",
+    "categories_description_3": "LOREM IPSUM DOLOR SIT AMET CONSECTETUR ADIPISCING ELIT.",
+    "visa_link": "http:\/\/www.visa.co.in\/personal\/cards\/",
+    "maestro_card_link": "",
+    "discover_link": "",
+    "american_express_link": "",
+    "paypal_link": "",
+    "stripe_link": "",
+    "social_twitter_link": "https:\/\/twitter.com\/shopify",
+    "social_facebook_link": "https:\/\/www.facebook.com\/shopify",
+    "sections": {
+      "Sidebar": {
+        "type": "Sidebar",
+        "settings": {
+          "logo_use_image": true,
+          "logo": "shopify:\/\/shop_images\/g3846_1e97a631-609f-43ea-a1d6-74b130995d05.png",
+          "logo_max_width": "450",
+          "search_icon": true,
+          "enble_login_dtail": true,
+          "enable_cart_button": true,
+          "footer_menu": "footer",
+          "enable_social_links": true
+        }
+      },
+      "Footer": {
+        "type": "Footer",
+        "settings": {
+          "footer_newsletter_enable": true,
+          "newsletter_title": "STAY CONNECTED TO LUXUMBOURG",
+          "copyright_enble": true,
+          "copyright_description": "<span>© Copyright 2022 <\/span>Designed with <i class=\"fa fa-heart\"><\/i> by <a href=\"https:\/\/www.hulkapps.com\/\/\" target=\"_blank\">HulkApps<\/a>",
+          "payment_method_enble": true
+        }
+      },
+      "1478927908815": {
+        "type": "Slideshow",
+        "blocks": {
+          "1478927908815-0": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "title": "shoes walk the walk in total comfort.",
+              "button_name": "view collection",
+              "link": ""
+            }
+          },
+          "1478927908815-1": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "title": "leather bags fall of 2016 collection",
+              "button_name": "view collection",
+              "link": ""
+            }
+          },
+          "1479028667617": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "title": "take $100 off spring leather jackets",
+              "button_name": "View Collection",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1478927908815-0",
+          "1478927908815-1",
+          "1479028667617"
+        ],
+        "settings": {
+          "slider_home_transition": "horizontal",
+          "slider_home_show_dots": true,
+          "slider_home_show_nav": true,
+          "slideshow_auto": false,
+          "slider_home_rate": "4000"
+        }
+      },
+      "1478938055871": {
+        "type": "Collection-List",
+        "blocks": {
+          "1478938055871-0": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "featured_collection": ""
+            }
+          },
+          "1478938055871-1": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "featured_collection": ""
+            }
+          },
+          "1478938055871-2": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "featured_collection": ""
+            }
+          }
+        },
+        "block_order": [
+          "1478938055871-0",
+          "1478938055871-1",
+          "1478938055871-2"
+        ],
+        "settings": {
+          "button_name": "Shop Now"
+        }
+      },
+      "1478939880003": {
+        "type": "Brand-List",
+        "blocks": {
+          "1478939880003-0": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1478939880003-1": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1478939880003-2": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1478940294981": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1478940298973": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1478939880003-0",
+          "1478939880003-1",
+          "1478939880003-2",
+          "1478940294981",
+          "1478940298973"
+        ],
+        "settings": {
+          "title": "Shop by brands"
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "image": "",
+          "products_per_row": "4",
+          "pagination_limit": "12"
+        }
+      },
+      "collections-template": {
+        "type": "collections-template",
+        "blocks": {
+          "1478946496009": {
+            "type": "collection",
+            "settings": {
+              "collection": "",
+              "image": "",
+              "collection_button_name": "Shop Now"
+            }
+          },
+          "1478946506121": {
+            "type": "collection",
+            "settings": {
+              "collection": "",
+              "image": "",
+              "collection_button_name": "Shop Now"
+            }
+          },
+          "1478946545402": {
+            "type": "collection",
+            "settings": {
+              "collection": "",
+              "image": "",
+              "collection_button_name": "Shop Now"
+            }
+          }
+        },
+        "block_order": [
+          "1478946496009",
+          "1478946506121",
+          "1478946545402"
+        ],
+        "settings": {
+          "image": ""
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "show_vendor": false,
+          "compare_price_enable": true,
+          "show_quantity": true,
+          "show_next_prev_enable": true,
+          "enable_tabify": true,
+          "add_tab_1": true,
+          "add_tab_1_title": "Shipping & Returns",
+          "add_tab_1_content": "Lorem ipsum dolor sit amet, consectetur elit, seddo eiusmod tempor incididunt ut labore et dolore magna aliqua",
+          "related_product_enable": true,
+          "related_product_title": "Related Products",
+          "products_per_row": "4"
+        }
+      },
+      "about-template": {
+        "type": "about-template",
+        "blocks": {
+          "1478951505158": {
+            "type": "Text",
+            "settings": {
+              "testimonial_content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+              "author": "John Deo"
+            }
+          },
+          "1478951669828": {
+            "type": "Text",
+            "settings": {
+              "testimonial_content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+              "author": "John Deo"
+            }
+          }
+        },
+        "block_order": [
+          "1478951505158",
+          "1478951669828"
+        ],
+        "settings": {
+          "image": "",
+          "testimonials_title": "WHAT DO YOU THINK",
+          "shipping_enable": true,
+          "shipping_title": "FREE SHIPPING WORLDWIDE",
+          "shipping_subtitle": "Guaranteed Delivery in 4 Days",
+          "customer_enable": true,
+          "customer_title": "24\/7 CUSTOMER SERVICE",
+          "customer_subtitle": "Call Us 24\/7 At 0123456789",
+          "return_enable": true,
+          "return_title": "EASY RETURNS!",
+          "return_subtitle": "Send Within 30 Days"
+        }
+      },
+      "contact-template": {
+        "type": "contact-template",
+        "settings": {
+          "image": "",
+          "enable_phone": true,
+          "phone_title": "PHONE NO:",
+          "phone_no_1": "+015566775544",
+          "phone_no_2": "+012684578562",
+          "enable_email_address": true,
+          "email_address_title": "EMAIL ADDRESS:",
+          "email_address_1": "info@test.com",
+          "email_address_2": "info@example.com",
+          "enable_address": true,
+          "address_title": "ADDRESS:",
+          "address_content": "Lorem ipsum dolor sit amet,\r\n<br>\r\nconsectetur adipiscing elit",
+          "form_title_name": "Send Mail",
+          "enable_google_map": true,
+          "google_map_address": "150 Elgin Street, 8th Floor. Ottawa, ON, Canada. K2P 1L4",
+          "map_zoom_level": "17",
+          "enable_google_zoom": false
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "image": "",
+          "no_of_articles": "3",
+          "enable_author_name": true,
+          "enable_comment": true
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "show_article_nav": true,
+          "blog_author_enable": true,
+          "enable_comment": true,
+          "no_of_comment": "5"
+        }
+      },
+      "1479033072221": {
+        "type": "Featured-Collections",
+        "settings": {
+          "title": "Best Sellers",
+          "bestseller_collection": "",
+          "num_per_row": "4"
+        }
+      },
+      "1479033259820": {
+        "type": "Instagram",
+        "settings": {
+          "title": "",
+          "insta_client_id": "",
+          "insta_access_Token": "",
+          "insta_userid": "",
+          "insta_limit": ""
+        }
+      },
+      "1479978834979": {
+        "type": "Featured-Blog",
+        "settings": {
+          "title": "LATEST BLOG",
+          "blog": "news"
+        }
+      },
+      "search-template": {
+        "type": "search-template",
+        "settings": {
+          "image": "",
+          "search_pagination_limit": "12"
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "settings": {
+          "image": "",
+          "show_multiple_currencies_note": true,
+          "cart_notes_enable": true,
+          "cart_vendor_enable": true
+        }
+      },
+      "password-template": {
+        "type": "password-template",
+        "settings": {
+          "logo_use_image": false,
+          "logo": "",
+          "logo_max_width": "200",
+          "title": "Will be opening soon...",
+          "password-page-background": "",
+          "enable_password_sociallink": true
+        }
+      }
+    },
+    "content_for_index": [
+      "1478927908815",
+      "1478938055871",
+      "1479033072221",
+      "1479978834979",
+      "1478939880003",
+      "1479033259820"
+    ]
+  },
+  "presets": {
+    "Default": {
+      "ajax_cart_enable": true,
+      "cart_notes_enable": true,
+      "color_body_bg": "#fff",
+      "color_body_text": "#333333",
+      "color_borders": "#e5e5e5",
+      "color_footer_bg": "#f2f2f2",
+      "color_footer_social_link": "#bbbbbb",
+      "color_footer_text": "#636363",
+      "color_primary": "#747474",
+      "color_secondary": "#bbb",
+      "favicon_enable": false,
+      "footer_newsletter_enable": true,
+      "footer_social_enable": true,
+      "logo_use_image": false,
+      "social_facebook_link": "https:\/\/www.facebook.com\/shopify",
+      "social_twitter_link": "https:\/\/twitter.com\/shopify"
+    }
+  }
+}

@@ -1,0 +1,225 @@
+<!-- /templates/cart.liquid -->
+
+<!--======  #PAGE BANNER  ======-->
+<div id="page_banner" class="wow fadeIn" data-wow-delay="200ms" style="background:url({% if section.settings.image %}{{ section.settings.image | img_url : 'master' }}{% else %}{{ 'banner_image.png' | asset_url }}{% endif %}) center; background-size:cover;">
+  <div class="container">
+    <div class="banner_caption">         
+      <h3>{{ 'cart.general.title' | t }}</h3>   
+      {% include 'breadcrumb' %}
+    </div>
+  </div>
+</div>  
+
+<!--======  #CART ITEMS  ============-->    
+<div id="cart_items">     
+  <div class="container"> 
+    {% if cart.item_count > 0 %}
+    <form action="/cart" method="post" novalidate class="cart">
+      <div class="cart-layout">               
+        <div class="cart-header">                 
+          <div class="grid__item large--two-sixths max-large--two-sixths medium-large--two-sixths medium--three-fifths small--one-half">                         
+            <div class="th cart-item-name">
+              <h6>{{ 'cart.label.product' | t }}</h6>
+            </div>
+          </div>   
+          <div class="grid__item large--one-eighth max-large--one-eighth medium-large--one-eighth">                         
+
+          </div>
+          <div class="grid__item large--one-eighth max-large--one-eighth medium-large--one-eighth">                         
+            <div class="th cart-price">
+              <h6>{{ 'cart.label.price' | t }}</h6>
+            </div>
+          </div>   
+          <div class="grid__item large--two-twelfths max-large--two-twelfths medium-large--two-twelfths grid_qty">                         
+            <div class="th qty">
+              <h6>{{ 'cart.label.quantity' | t }}</h6>
+            </div>
+          </div>   
+          <div class="grid__item large--two-twelfths max-large--two-twelfths medium-large--two-twelfths medium--two-fifths small--one-half">                         
+            <div class="th cart-total">
+              <h6>{{ 'cart.label.total' | t }}</h6>
+            </div>
+          </div>  
+          <div class="grid__item one-twelfth">
+            <!--<div class="th cart-total">
+<h6>remove</h6>
+</div>-->
+          </div>                   
+        </div>                  
+        <div class="cart-items"> 
+          {% for item in cart.items %}                        
+          <div class="cart-item">
+
+            <div class="grid__item large--one-eighth max-large--one-eighth medium-large--one-eighth medium--one-fifth small--one-quarter">
+              <div class="tr cart-item-name">
+                <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+              </div>
+            </div>
+            <div class="grid__item large--two-sixths max-large--two-sixths medium-large--two-sixths medium--four-fifths small--three-quarters">
+              <div class="tr cart-des">
+                <h6><a href="{{ item.url | within : collection.all }}">{{ item.product.title }}</a></h6>
+                {% unless item.variant.title contains 'Default' %}
+                <p>{{ item.variant.title }}</p>
+                {% if section.settings.cart_vendor_enable %}
+                <p>{{ item.vendor }}</p>
+                {% endif %}
+
+                {% endunless %}
+
+                {% comment %}
+                Optional, loop through custom product line items if available
+
+                For more info on line item properties, visit:
+                - http://docs.shopify.com/support/your-store/products/how-do-I-collect-additional-information-on-the-product-page-Like-for-a-monogram-engraving-or-customization
+                {% endcomment %}
+                {% assign property_size = item.properties | size %}
+                {% if property_size > 0 %}
+                {% for p in item.properties %}
+                {% unless p.last == blank %}
+                {{ p.first }}:
+
+                {% comment %}
+                Check if there was an uploaded file associated
+                {% endcomment %}
+                {% if p.last contains '/uploads/' %}
+                <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                {% else %}
+                {{ p.last }}
+                {% endif %}
+
+                <br>
+                {% endunless %}
+                {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="grid__item large--one-eighth max-large--one-eighth medium-large--one-eighth medium--one-third small--three-tenths">
+              <div class="tr cart-price">
+                <p><span class="money">{{ item.price | money }}</span></p>
+              </div>
+            </div>
+
+            <div class="grid__item large--two-twelfths max-large--two-twelfths medium-large--two-twelfths medium--one-third small--four-tenths">   
+              <div class="tr qty">
+                <div class="product_input">      
+                  <button type="button" class="minus" id="minus">
+                    <span><i class="icon-minus"></i></span></button>
+                  <input type="text" value="{{ item.quantity }}" readonly="readonly" name="updates[]" class="product-quantity" id="quantity">
+                  <button type="button" class="plus" id="plus">
+                    <span><i class="icon-plus"></i></span></button>      
+                </div>
+                <div class="trash">
+
+                  <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart__remove"><i class="fa fa-trash"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="grid__item large--two-twelfths max-large--two-twelfths medium-large--two-twelfths medium--one-third small--three-tenths">
+              <div class="tr cart-total">
+                <p><span class="money">{{ item.line_price | money }}</span></p>
+              </div>
+            </div>       
+            <div class="grid__item one-twelfth">
+              <div class="trash">
+                <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart__remove">
+                  <i class="fa fa-trash"></i></a>
+              </div>
+            </div>          
+          </div>
+          {% endfor %}
+        </div>                  
+        <div class="checkout-section grid">
+
+		
+          {% if section.settings.show_multiple_currencies_note %}
+           <p class="grid__item one-whole currency_note">
+            {{ shop.name }} process all orders in {{ shop.currency }}.
+            While the content of your cart is currently displayed in
+            <span class="selected-currency"></span>,
+            you will checkout using {{ shop.currency }} at the most current exchange rate.
+          </p>
+			{% endif %}          
+
+          {% if section.settings.cart_notes_enable %}
+          <div class="grid__item large--two-fifths max-large--two-fifths medium-large--five-twelfths" left>
+            <div class="cart_total_note">
+              <h6><label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label></h6>
+              <textarea name="note" class="input-full" id="CartSpecialInstructions">{{ cart.note }}</textarea>
+            </div>
+          </div>  
+          {% endif %}
+
+
+          <div class="grid__item large--two-fifths max-large--two-fifths medium-large--six-twelfths right">
+            <div class="cart_total">   
+              <h5>grandtotal <span class="money">{{ cart.total_price | money }}</span></h5>
+              <input type="submit" id="update-cart" class="btn--primary" name="update" value="UPDATE">
+              <input type="submit" id="checkout" name="checkout" class="btn--primary" value="CHECKOUT"/>                         
+            </div>
+          </div>
+        </div>                                                         
+      </div>  
+    </form>    
+    {% else %}
+    <div class="cart-layout">  
+      <div class="cart-empty text-center">
+        <div class="empty_icon"></div>
+        <h6>Your Shopping Cart is empty</h6> 
+        <p>You can add items from your wishlist by clicking add to cart</p>
+        <div class="cart_divider">or</div>
+        <p>Get started with options below</p>
+        <div class="collection_link">
+          {% for collection in collections %}
+          {% unless collection.handle contains 'best-sellers'  %}
+          <a href="{{ collection.url }}">{{ collection.title }}</a>
+          {% endunless  %}
+          {% endfor %}
+
+        </div>                     
+      </div>
+    </div>	
+    {%  endif %}             
+  </div>  
+</div>         
+
+
+
+
+{% schema %}
+  {
+    "name": "Cart Page",
+    "settings": [
+ 	  {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Banner Image"
+       },
+	  {
+		"type":"checkbox",
+		"id":"show_multiple_currencies_note",
+		"label":"Show Multiple Currencies Note",
+		"default":true
+	 },
+	 {
+        "type": "checkbox",
+        "id": "cart_notes_enable",
+        "label": "Allow Notes With Orders",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_vendor_enable",
+        "label": "Show Product Vendor",
+        "default": false
+      }
+
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

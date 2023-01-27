@@ -1,0 +1,798 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Luxembourg by HulkApps",
+    "theme_author": "HulkApps",
+    "theme_version": "2.0.1",
+    "theme_documentation_url": "https:\/\/hulk.freshdesk.com\/support\/solutions\/folders\/19000146196",
+    "theme_support_email": "hello@hulkcode.com"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary Color",
+        "default": "#252525"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary Color",
+        "default": "#cab901"
+      },
+      {
+        "type": "color",
+        "id": "nav_text_color",
+        "label": "Navigation Text Color",
+        "default": "#333"
+      },
+      {
+        "type": "color",
+        "id": "color_text_body",
+        "label": "Text Color Body",
+        "default": "#333"
+      },
+      {
+        "type": "color",
+        "id": "color_text_secondary",
+        "label": "Text Color Secondary",
+        "default": "#ababab"
+      },
+      {
+        "type": "header",
+        "content": "background color"
+      },
+      {
+        "type": "color",
+        "id": "color_body_bg",
+        "label": "Body Background",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "nav_color",
+        "label": "Navigation Background Color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "color_body_secondary",
+        "label": "Color Body Secondary",
+        "default": "#f2f2f2"
+      },
+      {
+        "type": "color",
+        "id": "footer_bg_color",
+        "label": "Footer Background Color",
+        "default": "#e8e8e8"
+      },
+      {
+        "type": "header",
+        "content": "Boder Color"
+      },
+      {
+        "type": "color",
+        "id": "border_color_darken",
+        "label": "Border Color Darken",
+        "default": "#333"
+      },
+      {
+        "type": "color",
+        "id": "border_color_light",
+        "label": "Border Color lighter",
+        "default": "#ccc"
+      },
+      {
+        "type": "header",
+        "content": "Helper colors"
+      },
+      {
+        "type": "color",
+        "id": "disable_color",
+        "label": "Disable Color",
+        "default": "#f6f6f6"
+      },
+      {
+        "type": "color",
+        "id": "error_color",
+        "label": "Error Color",
+        "default": "#d02e2e"
+      },
+      {
+        "type": "color",
+        "id": "success_color",
+        "label": "Success Color",
+        "default": "#56ad6a"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font",
+        "id": "body_font",
+        "label": "Body Font"
+      },
+      {
+        "type": "text",
+        "id": "body_custom_font",
+        "label": "Custom Body Font",
+        "info": "You can specify your own font from Google Fonts here. Make sure the font is available on [Google Fonts](https:\/\/www.google.com\/fonts) and leave empty if you use a predefined font above."
+      },
+      {
+        "type": "text",
+        "id": "font_size_body",
+        "label": "Font Size"
+      },
+      {
+        "type": "font",
+        "id": "heading_font",
+        "label": "Heading Font"
+      },
+      {
+        "type": "text",
+        "id": "heading_custom_font",
+        "label": "Custom Heading Font",
+        "info": "You can specify your own font from Google Fonts here. Make sure the font is available on [Google Fonts](https:\/\/www.google.com\/fonts) and leave empty if you use a predefined font above."
+      },
+      {
+        "type": "header",
+        "content": "Button and Banner Font"
+      },
+      {
+        "type": "font",
+        "id": "btn_banner_font",
+        "label": "Button and Bannner Font"
+      },
+      {
+        "type": "text",
+        "id": "btn_banner_custom_font",
+        "label": "Custom Button and Bannner Font",
+        "info": "You can specify your own font from Google Fonts here. Make sure the font is available on [Google Fonts](https:\/\/www.google.com\/fonts) and leave empty if you use a predefined font above."
+      },
+      {
+        "type": "header",
+        "content": "Header and Footer Font"
+      },
+      {
+        "type": "font",
+        "id": "font_footer",
+        "label": "Font"
+      },
+      {
+        "type": "text",
+        "id": "footer_custom_font",
+        "label": "Custom Font",
+        "info": "You can specify your own font from Google Fonts here. Make sure the font is available on [Google Fonts](https:\/\/www.google.com\/fonts) and leave empty if you use a predefined font above."
+      },
+      {
+        "type": "text",
+        "id": "footer_size",
+        "label": "Font Size"
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon Image",
+        "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  },
+  {
+    "name": "Navigation",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Main Menu"
+      },
+      {
+        "type": "link_list",
+        "id": "header_menu",
+        "label": "Choose Menu",
+        "default": "main-menu"
+      },
+      {
+        "type": "header",
+        "content": "Mega Dropdown - Products"
+      },
+      {
+        "type": "text",
+        "id": "megadropdown_link",
+        "label": "Mega Dropdown Link Title",
+        "default": "Products",
+        "info": "Triggers the mega dropdown"
+      },
+      {
+        "type": "checkbox",
+        "id": "mega_1_show",
+        "label": "Show Mega Dropdown Menu 1"
+      },
+      {
+        "type": "link_list",
+        "id": "mega_1_links",
+        "label": "Choose menu 1"
+      },
+      {
+        "type": "checkbox",
+        "id": "mega_2_show",
+        "label": "Show Mega Dropdown Menu 2"
+      },
+      {
+        "type": "link_list",
+        "id": "mega_2_links",
+        "label": "Choose menu 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "mega_3_show",
+        "label": "Show Mega Dropdown Menu 3"
+      },
+      {
+        "type": "link_list",
+        "id": "mega_3_links",
+        "label": "Choose Menu 3"
+      },
+      {
+        "type": "checkbox",
+        "id": "mega_4_show",
+        "label": "Show Mega Dropdown Menu 4"
+      },
+      {
+        "type": "link_list",
+        "id": "mega_4_links",
+        "label": "Choose menu 4"
+      },
+      {
+        "type": "checkbox",
+        "id": "mega_5_show",
+        "label": "Show Mega Dropdown Menu 5"
+      },
+      {
+        "type": "link_list",
+        "id": "mega_5_links",
+        "label": "Choose MKenu 5"
+      },
+      {
+        "type": "header",
+        "content": "Mega Dropdown - Collections"
+      },
+      {
+        "type": "text",
+        "id": "shop_megadropdown_link",
+        "label": "Mega Dropdown Link Title",
+        "info": "Triggers Mega Dropdown"
+      },
+      {
+        "type": "image_picker",
+        "id": "mega_shop_1_image",
+        "label": "Choose Image collection 1"
+      },
+      {
+        "type": "collection",
+        "id": "mega_shop_1_show",
+        "label": "Choose collection 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "mega_shop_2_image",
+        "label": "Choose Image collection 2"
+      },
+      {
+        "type": "collection",
+        "id": "mega_shop_2_show",
+        "label": "Choose collection 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "mega_shop_3_image",
+        "label": "Choose Image collection 3"
+      },
+      {
+        "type": "collection",
+        "id": "mega_shop_3_show",
+        "label": "Choose collection 3"
+      },
+      {
+        "type": "image_picker",
+        "id": "mega_shop_4_image",
+        "label": "Choose Image collection 4"
+      },
+      {
+        "type": "collection",
+        "id": "mega_shop_4_show",
+        "label": "Choose collection 4"
+      },
+      {
+        "type": "image_picker",
+        "id": "mega_shop_5_image",
+        "label": "Choose Image collection 5"
+      },
+      {
+        "type": "collection",
+        "id": "mega_shop_5_show",
+        "label": "Choose collection 5"
+      }
+    ]
+  },
+  {
+    "name": "MailChimp",
+    "settings": [
+      {
+        "type": "text",
+        "id": "newsletter_form_action",
+        "label": "MailChimp Form Action Url",
+        "info": "[Where do I find my MailChimp form action URL?](http:\/\/docs.shopify.com\/support\/configuration\/store-customization\/where-do-i-get-my-mailchimp-form-action)"
+      }
+    ]
+  },
+  {
+    "name": "Banner",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Customer Pages"
+      },
+      {
+        "type": "image_picker",
+        "id": "customer_banner",
+        "label": "Banner Image",
+        "info": "1920 x 278px Recommended"
+      },
+      {
+        "type": "header",
+        "content": "Page Banner"
+      },
+      {
+        "type": "image_picker",
+        "id": "page_banner",
+        "label": "Banner Image",
+        "info": "1920 x 278px Recommended"
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_social_links",
+        "label": "Enable social links",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "facebook_link",
+        "label": "Facebook",
+        "info": "https:\/\/www.facebook.com\/shopify",
+        "default": "https:\/\/www.facebook.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "twitter_link",
+        "label": "Twitter",
+        "info": "https:\/\/twitter.com\/shopify",
+        "default": "https:\/\/twitter.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "pinterest_link",
+        "label": "Pinterest",
+        "info": "https:\/\/pinterest.com\/shopify",
+        "default": "https:\/\/pinterest.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "google_link",
+        "label": "Google+",
+        "info": "https:\/\/plus.google.com\/+shopify",
+        "default": "https:\/\/plus.google.com\/+shopify"
+      },
+      {
+        "type": "text",
+        "id": "instagram_link",
+        "label": "Instagram",
+        "info": "https:\/\/instagram.com\/shopify",
+        "default": "https:\/\/instagram.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "vimeo_link",
+        "label": "Vimeo",
+        "info": "https:\/\/vimeo.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "youTube_link",
+        "label": "Youtube",
+        "info": "https:\/\/www.youtube.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "tumblr_link",
+        "label": "Tumblr",
+        "info": "http:\/\/shopify.tumblr.com\/"
+      },
+      {
+        "type": "header",
+        "content": "sharing"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_sharing",
+        "label": "Enable product sharing",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_sharing",
+        "label": "Enable blog post sharing",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "blog_sharing_title",
+        "label": "Title Name"
+      },
+      {
+        "type": "header",
+        "content": "Enable social sharing"
+      },
+      {
+        "type": "checkbox",
+        "id": "share_facebook",
+        "label": "Share on Facebook",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_twitter",
+        "label": "Tweet on Twitter",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_pinterest",
+        "label": "Pin on Pinterest",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "linked_share",
+        "label": "Share on Linkedin",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_google",
+        "label": "+1 on Google Plus",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "General Settings",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_wishlist",
+        "label": "Enable Wishlist Functionality",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_product_image_zoom",
+        "label": "Enable Product Image Zoom",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "ajax_cart_enable",
+        "label": "Enable Add Product Using Ajax",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Collection Filter",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "display_grid_list_view",
+        "label": "Enable Grid and List View",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_sorting_filter",
+        "label": "Enable Sort By",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Filter"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_filter",
+        "label": "Enable",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Categories"
+      },
+      {
+        "type": "checkbox",
+        "id": "enble_categories",
+        "label": "Show",
+        "info": "It will shows all types.",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "categories_title",
+        "label": "Name"
+      },
+      {
+        "type": "header",
+        "content": "Price"
+      },
+      {
+        "type": "checkbox",
+        "id": "enble_price_filter",
+        "label": "Show",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "filter_price_title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "filter_price_taglist",
+        "label": "Filter By Price List",
+        "info": "Separate by a comma (Example: \"$100-$199,$200-$299\")"
+      },
+      {
+        "type": "header",
+        "content": "Color"
+      },
+      {
+        "type": "checkbox",
+        "id": "enble_color_filter",
+        "label": "Show",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "filter_color_title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "filter_color_taglist",
+        "label": "Filter By Color List",
+        "info": "Separate by a comma (Example: \"Black,White,Blue\")"
+      },
+      {
+        "type": "header",
+        "content": "Vendor"
+      },
+      {
+        "type": "checkbox",
+        "id": "enble_brand_filter",
+        "label": "Show",
+        "info": "It will show all vendors.",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "vendor_title",
+        "label": "Title Name"
+      },
+      {
+        "type": "header",
+        "content": "Gender"
+      },
+      {
+        "type": "checkbox",
+        "id": "enble_gender_filter",
+        "label": "Show",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "filter_gender_title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "filter_gender_taglist",
+        "label": "Filter By Gender List",
+        "info": "Separate by a comma (Example: \"men,women\")"
+      }
+    ]
+  },
+  {
+    "name": "Blog Sidebar",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Blog Sidebar"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_blog_sidebar",
+        "label": "Enable",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Search"
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_search_enable",
+        "label": "Show",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Categories"
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_enable_categories",
+        "label": "Enable",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "category_title",
+        "label": "Title Name"
+      },
+      {
+        "type": "link_list",
+        "id": "blog_choose_menu",
+        "label": "Choose Menu",
+        "info": "It will show all categories from selected navigation menu. you can also add more categories from 'Navigation'."
+      },
+      {
+        "type": "header",
+        "content": "Latest Blog Posts"
+      },
+      {
+        "type": "checkbox",
+        "id": "latest_blog_enable",
+        "label": "Show",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "latest_blog_title",
+        "label": "Title",
+        "default": "Latest Blog posts"
+      },
+      {
+        "type": "header",
+        "content": "Post Tags"
+      },
+      {
+        "type": "checkbox",
+        "id": "post_tag_enable",
+        "label": "Show",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "post_tag_title",
+        "label": "Title"
+      },
+      {
+        "type": "header",
+        "content": "Rss Field"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_rss_field",
+        "label": "Show",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Newsletter Popup",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "newsletter_enable",
+        "label": "Enable Popup",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "newsletter_sub_title",
+        "label": "Subtitle",
+        "default": "enter your email and get"
+      },
+      {
+        "type": "text",
+        "id": "popup_newsletter_title",
+        "label": "Title",
+        "default": "20% off"
+      },
+      {
+        "type": "textarea",
+        "id": "popup_descrition",
+        "label": "About",
+        "default": "your first purchase"
+      },
+      {
+        "type": "image_picker",
+        "id": "newsbanner_img",
+        "label": "Image",
+        "info": "750px x 440px Recommended"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_newsletter_social",
+        "label": "Show Social Icon",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Currency Converter",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "To offer multiple currencies on your online store, you must first [edit your store's currency formatting](https:\/\/help.shopify.com\/manual\/using-themes\/troubleshooting\/help-script-find-money-formats)."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_multiple_currencies",
+        "label": "Enable Currency Conversion",
+        "default": true,
+        "info": "Even though prices are displayed in different currencies, orders will still be processed in your store's currency."
+      },
+      {
+        "type": "select",
+        "id": "currency_format",
+        "label": "Format",
+        "options": [
+          {
+            "value": "money_format",
+            "label": "Without Currency ($10.00)"
+          },
+          {
+            "value": "money_with_currency_format",
+            "label": "With Currency ($10.00 CAD)"
+          }
+        ],
+        "default": "money_with_currency_format"
+      },
+      {
+        "type": "text",
+        "id": "supported_currencies",
+        "label": "Supported currencies",
+        "default": "GBP CAD USD AUD EUR",
+        "info": "Use the country's ISO [currency code](http:\/\/www.xe.com\/iso4217.php). Separate your currency codes with a space."
+      },
+      {
+        "type": "text",
+        "id": "default_currency",
+        "label": "Default Currency",
+        "default": "USD"
+      }
+    ]
+  }
+]

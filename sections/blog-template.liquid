@@ -1,0 +1,112 @@
+  <!--======  #PAGE BANNER  ======-->
+<div id="page_banner" class="wow fadeIn" data-wow-delay="200ms" style="{% if section.settings.image != blank %}background:url({{ section.settings.image | img_url : 'master' }}) center;{% else %}background:url({{ 'banner_image.png' | asset_url }}) center;{% endif %} background-size:cover;">
+  <div class="container">
+    <div class="banner_caption">         
+     <h3>{{ blog.title }} </h3>
+      {% include 'breadcrumb' %}
+    </div>
+  </div>
+</div>  
+
+<!--======  #BLOG SECTION  ============-->    
+{% paginate blog.articles by section.settings.no_of_articles %}
+<div id="blog_section">
+  <div class="container">        
+    <div class="grid"> 
+
+      <div class="grid__item nine-twelfths medium-down--one-whole">   
+        <!-- Blog List -->  
+        <div class="blog_list">
+  
+            {% for article in blog.articles %}            
+              <div class="blog_item">
+                <div class="blog_img">
+                  <a href="{{ article.url }}">
+                    {% if article.image.src != blank %}
+                    <img src="{{ article.image.src | img_url: 'master' }}" alt="{{ article.image.alt | escape }}" />
+                    {% else %}
+                    {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
+                    {% endif %} 
+                  </a>
+                </div>
+                <div class="blog_info">
+                  <div class="blog_creat"><span>{{ article.published_at | date: "%d %B, %Y" }}</span>
+                   {% if section.settings.enable_author_name %} <span>{{ article.author }}</span>{% endif %}
+                    {% if section.settings.enable_comment %}<span>Comments ({{ article.comments_count }})</span>{% endif %}</div>
+                  <h5><a href="{{ article.url }}">{{ article.title }}</a></h5>
+                  {% if article.excerpt.size > 0 %}
+                  {{ article.excerpt }}
+                  {% else %}
+                  <p>{{ article.content | strip_html | truncatewords: 50 }}</p>
+                  {% endif %}
+                  <a href="{{ article.url }}" class="btn btn--small">read post</a>
+                </div>                                  
+              </div>           
+
+            {% endfor %}
+
+
+     
+        </div>
+        <!-- Blog List -->  
+
+        <!-- Pagination Start -->   
+        <div class="pagination-wrapper">
+          {% include 'pagination' %}
+        </div>  
+        <!-- Pagination End -->                 
+      </div>               
+
+      <!-- Sidebar Start --> 
+      {% if settings.enable_blog_sidebar %}
+      <div class="grid__item three-twelfths medium-down--one-whole">                    
+        {% include 'blog-sidebar' %}               
+      </div>              
+      {% endif %}
+      <!-- Sidebar End -->                    
+    </div>        
+  </div>    
+</div>    
+{% endpaginate %}
+
+
+{% schema %}
+  {
+    "name": "Blog Page",
+    "settings": [
+	 {
+		"type":"image_picker",
+		"id":"image",
+		"label":"Banner Image",
+		"info": "Maximum image dimensions are  1920px wide by 278px high. The uploaded file will be resized to fit within those constraints."
+	  }, 
+	 {
+        "type": "text",
+        "id": "no_of_articles",
+        "label": "No. Of Articles Per Blog Page",
+        "default": "3"
+      },
+	  {
+        "type":"checkbox",
+        "id":"enable_author_name",
+        "label":"Show blog post author",
+		"default":true
+      },
+      {
+        "type":"checkbox",
+        "id":"enable_comment",
+        "label":"Show Comments Number",
+		"default":true
+      }
+      
+
+
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

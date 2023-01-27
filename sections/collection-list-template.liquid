@@ -1,0 +1,96 @@
+<!-- /templates/collection.liquid -->
+<!--======  #BANNER  ======-->
+<div id="page_banner" class="wow fadeIn" data-wow-delay="200ms"  style="{% if collection.image %}background:url({{ collection.image | img_url: 'master' }}) center;{% elsif section.settings.image != blank %}background:url({{ section.settings.image | image_url : 'master' }}) center;{% else %}background:url({{ 'banner_image.png' | asset_url }}) center;{% endif %}background-size:cover;"> 
+    <div class="container">
+      <div class="banner_caption">         
+        <h3>{{ collection.title }}</h3>
+           {% include 'breadcrumb' %}
+      </div>
+    </div>
+</div>  
+
+{% if settings.display_grid_list_view  or settings.enable_sorting_filter or settings.enable_filter  %}
+<!--======  #PRODUCT FILTER  ============-->    
+ {% include 'collection-filter' %}
+{% endif %}
+
+ <!--======  #PRODUCT LIST  ============-->
+{% paginate collection.products by section.settings.pagination_limit %}
+
+    <div id="collection" data-section-id="{{ section.id }}" data-section-type="collection-template">
+      <div class="container">
+            <div class="product_list product_list_hor">
+              <div class="grid">
+              {% for product in collection.products %}
+                
+               {% include 'product-loop-list' %}
+                
+                
+                {% else %}
+
+                {% if collection.handle == 'all' and current_tags == '' %}
+
+                {% comment %}
+                Add default products to help with onboarding for collections/all only
+                {% endcomment %}
+                {% unless emptyState %}
+                {{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
+                {% assign emptyState = true %}
+                {% endunless %}
+                {% include 'onboarding-empty-collection' %}
+
+                {% else %}
+
+                {% comment %}
+                If collection exists but is empty, display message
+                {% endcomment %}
+                <div class="grid__item">
+                  <p>{{ 'collections.general.no_matches' | t }}</p>
+                </div>
+
+                {% endif %}
+			{% endfor %}   
+              </div>
+             </div>
+       </div>
+        <div class="loading-modal" data-translate="cart.ajax_cart.loading" style="display: none;">Loading...</div>  
+    </div>        
+
+<!--======  #PRODUCT PAGINATION  ============-->    
+
+{% if paginate.pages > 1 %}
+<div class="pagination-wrapper collection">
+    {% include 'pagination' %}
+</div>
+{% endif %}
+{% endpaginate %}
+
+
+
+
+{% schema %}
+  {
+    "name": "Collection Page",
+    "settings": [
+       {
+		"type":"image_picker",
+		"id":"image",
+		"label":"Banner Image",
+		"info": "Maximum image dimensions are  1920px wide by 278px high. The uploaded file will be resized to fit within those constraints."
+	  },
+     {
+        "type": "text",
+        "id": "pagination_limit",
+        "label": "Number Of Products Per Page",
+        "default": "12"
+      }
+	 
+   ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

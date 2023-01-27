@@ -1,0 +1,81 @@
+<!--======  #BLOG LIST  ===============-->
+    <div id="blog">
+      <div class="container">
+        {% if section.settings.title != blank %}
+      	  <h3 class="site_title">{{ section.settings.title }}</h3>
+        {% endif %} 
+        <div class="blog_list">
+              <div class="grid">
+
+               {% for article in blogs[section.settings.blog].articles limit:3 %}
+				{% assign speed = forloop.index | times:100 %}
+                  <div class="grid__item one-third medium-down--one-whole wow fadeIn" data-wow-delay="{{speed}}ms">
+                      <div class="blog_item">
+                          <div class="blog_img">
+                 			{% if article.image.src != blank %}
+                             <img src="{{ article.image.src | img_url: '480x280' }}" alt="{{ article.image.alt | escape }}" />
+         					{% else %}
+                            	  {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
+                            {% endif %}	
+                            </div>
+                            <div class="blog_info">
+                                <a href="{{ article.url }}">{{ article.title }}</a>
+                                <div class="blog_creat">
+                                <span>{{ article.published_at | date: "%d,%m,%Y" }}</span><span>{{ article.author }}</span>
+
+                                </div>
+                                <div class="blog_div"></div>
+
+                                  {% if article.excerpt.size > 0 %}
+                                  {{ article.excerpt }}
+                                  {% else %}
+                        		      <p> {{ article.content | strip_html | truncatewords: 15 }}</p>
+                                  {% endif %}
+
+                                  <div class="view_btn"><a href="{{ article.url }}">read post</a></div>                                                          
+                          </div>
+                            <div class="border_effect"></div>
+                        </div>
+                    </div>
+              	{%  endfor %}
+                                     
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% schema %}
+{
+  "name": "Featured Blog",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "LATEST BLOG"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Choose Blog"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Blog",
+      "category": "blog",
+	  "settings": {
+        "blog": "News"
+      }
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

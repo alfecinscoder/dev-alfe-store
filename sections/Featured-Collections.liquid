@@ -1,0 +1,113 @@
+ <!--======  #PRODUCT LIST  ============-->
+{% assign products_per_row = section.settings.num_per_row %}
+
+<div id="collection" class="best_sellers">
+  <div class="container" data-section-id="{{ section.id }}" data-section-type="featured-collection">
+    {% if collections[section.settings.bestseller_collection].title != blank %}
+    <h3 class="site_title">{{section.settings.title}}</h3>
+    {% else %}
+    <h3 class="site_title">Featured Collection</h3>
+    {% endif %}
+    
+    <div class="product_list grid">  
+
+      {% case products_per_row %}
+          {% when '3' %}
+            {% assign grid_item_width = 'medium--one-half one-third small--one-whole' %}
+          {% when '4' %}
+            {% assign grid_item_width = 'small--one-whole one-quarter medium--one-half' %}
+          {% when '5' %}
+            {% assign grid_item_width = 'small--one-whole medium--one-half one-fifth' %}
+        {% endcase %}	
+        
+      
+     {% for product in collections[section.settings.bestseller_collection].products limit:section.settings.num_per_row %}
+		
+      {% assign speed = forloop.index | times:100 %}
+      <div class="grid__item {{ grid_item_width }} wow fadeIn" data-wow-delay="{{speed}}ms">
+			{% include 'product-grid-item' %}
+      </div>
+      
+      {% else %}
+
+      {% assign speed = forloop.index | times:100 %}
+     
+      {% for i in (1..products_per_row) %}
+            <div class="grid__item {{grid_item_width}} wow fadeIn" data-wow-delay="{{speed}}ms">
+              <div class="product_item">
+                <div class="price">$19.99</div>
+                  <div class="product_img">  
+                    <a href="/admin/products">
+                      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                      {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                    </a>
+                  </div>
+               <div class="product_info"> 
+                <div class="one-whole medium-large--nine-tenths medium--seven-eighths">       
+                  <a href="/admin/products" id="product-title">{{ 'homepage.onboarding.product_title' | t }}</a>
+				 </div>
+                </div>
+              </div>
+              
+            </div>
+            
+            {% endfor %}
+      {% endfor %}   
+    </div>                                                    
+
+  </div>
+</div>
+
+
+{% schema %}
+ {
+    "name": "Featured Collection",
+    "settings": [
+      
+	  {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured Collection"
+      },	
+      {
+        "type": "collection",
+        "id": "bestseller_collection",
+        "label": "Select Collection"
+      },
+	  {
+      "type": "select",
+      "id": "num_per_row",
+      "label": "Products Per Row",
+      "default": "4",
+      "options": [
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        }
+      ]
+    }
+	],
+
+	"presets": [
+    {
+      "name": "Featured Collection",
+      "category": "Collection"
+    }
+  ]	
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,99 @@
+<!-- /templates/list-collections.liquid -->
+
+<div id="page_banner" class="wow fadeIn" data-wow-delay="200ms" style="{% if section.settings.image != blank %}background:url({{ section.settings.image | img_url : 'master' }}) center;{% else %}background:url({{ 'banner_image.png' | asset_url }}) center;{% endif %} background-size:cover;"> 
+  <div class="container">
+    <div class="banner_caption">         
+      <h3>{{ collection.title }}</h3>
+      {% include 'breadcrumb' %}
+	 </div>
+  </div>
+</div>  
+
+
+{% if section.blocks.size > 0 %}
+<div id="collections_all"data-section-id="{{ section.id }}" data-section-type="collections-list">
+{% for block in section.blocks %}
+  <div class="collections_list">
+    <div class="container">
+      <div class="grid">
+        <div class="grid__item one-half medium-down--one-whole wow fadeIn" data-wow-delay="100ms">
+          {% if block.settings.image != blank %}  
+          <div class="collections_img" style="background:url({{ block.settings.image  | img_url: '2048x' }}) center / cover">
+          {% else %}
+          <div class="collections_img" style="background:url({{ 'collection_listing.png' | asset_url }}) center / cover">
+           {% endif %} 
+            <div class="collection_content">
+
+              <h4>{{ collections[block.settings.collection].title }}</h4>
+              
+              {% if collections[block.settings.collection].description != empty %}<p>{{ collections[block.settings.collection].description }}</p>{% endif %}
+              <div class="clear"></div>
+              <a href="{{ collections[block.settings.collection].url }}" class="btn btn--small">{{ block.settings.collection_button_name }}</a>
+            </div>
+          </div>  	
+        </div> 
+        <div class="grid__item one-half medium-down--one-whole collection_product">
+          <div class="grid">
+            {% for product in collections[block.settings.collection].products limit:4 %}
+            {% assign grid_item_width = 'one-half' %}
+              {% include 'product-grid-item' %}
+            {% endfor %}
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+
+{% endfor %}
+</div>
+{% endif %}
+
+{% schema %}
+
+  {
+    "name": "Collections Page",
+	"max_blocks":50,
+	"settings": [
+  	 {
+		"type":"image_picker",
+		"id":"image",
+		"label":"Banner Image",
+		"info": "Maximum image dimensions are  1920px wide by 278px high. The uploaded file will be resized to fit within those constraints."
+	  }
+	 
+  	],
+	"blocks": [
+    {
+      "type": "collection",
+      "name": "collection",
+      "settings": [
+           {
+            "type": "collection",
+            "id": "collection",
+            "label": "Select Collection"
+            },
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "Collection Image"
+            },
+            {
+            "type": "text",
+            "id": "collection_button_name",
+            "label": "Button Name"
+            }	
+		
+	   ]
+	}
+  ]	
+
+ }
+
+
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

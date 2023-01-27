@@ -1,0 +1,95 @@
+<!-- /templates/customers/login.liquid -->
+<!--======  #PAGE BANNER  ======-->
+<div class="wow fadeIn" data-wow-delay="200ms" id="page_banner" style="background:url({% if settings.customer_banner != blank %}{{ settings.customer_banner | img_url : 'master' }}{% else %}{{'banner_image.png' | asset_url }}{% endif %})center center no-repeat;  background-size:cover;"> 
+<div class="container">
+    <div class="banner_caption">         
+      <h3>{{ 'customer.login.sign_in' | t }}</h3>  
+      {%  include 'breadcrumb' %}
+    </div>
+  </div>
+</div>  
+
+    
+  <!--======  #LOGIN  ============-->    
+    <div id="customer-account">     
+         <div class="container">
+           <div class="account_content">
+             <div class="note form-success" id="ResetSuccess" style="display:none;">
+               We've sent you an email with a link to update your password.
+             </div>                    
+             <div id="CustomerLoginForm" style="display:block;"> 
+               {% form 'customer_login' %} 
+
+               {{ form.errors | default_errors }}
+
+               <input type="email" arial-label="Email" name="customer[email]" id="CustomerEmail" class="input-full" placeholder="Email" autocorrect="off" autocapitalize="off" required> 
+
+
+
+               {% if form.password_needed %}
+               <label for="CustomerPassword" class="hidden-label">{{ 'customer.login.password' | t }}</label>
+               <input type="password" value="" arial-label="Password" name="customer[password]" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" placeholder="{{ 'customer.login.password' | t }}">
+               {% endif %}          
+               <input type="submit" arial-label="submit" class="btn--primary btn--small btn--full" value="Sign In">
+
+               <div class="login_footer">
+
+                 {% if form.password_needed %}
+                 <a href="#recover" id="RecoverPassword">{{ 'customer.login.forgot_password' | t }}<i class="fa fa-angle-right"></i></a>
+                 {% endif %} 
+                 <a href="{{ shop.url }}" ><i class="fa fa-angle-left"></i>{{ 'customer.login.cancel' | t }}</a>
+
+
+               </div>                    
+               {% endform %}                         
+               <div class="meaning-block">
+                 <div class="or_hr"><span>or</span></div>
+                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
+                 <a href="/account/register" id="createaccount" class="btn--small btn">Create account</a>
+               </div>                      
+             </div> 
+             <div id="RecoverPasswordForm" style="display: none;">                    
+               <h6>{{ 'customer.recover_password.title' | t }}</h6>
+               <div class="divider"></div>
+               <p>{{ 'customer.recover_password.subtext' | t }}</p>                   
+               <div class="form-vertical">
+                 {% form 'recover_customer_password' %}
+
+                 {{ form.errors | default_errors }}
+
+                 {% if form.posted_successfully? %}
+                 {% assign resetPassword = true %}
+                 {% endif %}
+
+                 <label for="RecoverEmail" class="hidden-label">{{ 'customer.recover_password.email' | t }}</label>
+                 <input type="email" value="" name="email" id="RecoverEmail" class="input-full" placeholder="{{ 'customer.recover_password.email' | t }}" autocorrect="off" autocapitalize="off">
+
+                 <p>
+                   <input type="submit" class="btn--primary btn--small btn--full"  value="{{ 'customer.recover_password.submit' | t }}">
+                 </p>
+                 <button type="button" id="HideRecoverPasswordLink" class="btn btn--small">{{ 'customer.recover_password.cancel' | t }}</button>
+                 {% endform %}
+               </div> 
+
+
+               {% comment %}
+               If accounts are set as optional, the following will be shown as an option
+               during checkout, not on the default /login page.
+               {% endcomment %}
+               {% if shop.checkout.guest_login %}
+               <hr>
+
+               <h2>{{ 'customer.login.guest_title' | t }}</h2>
+
+               {% form 'guest_login' %}
+               <input type="submit" class="btn" value="{{ 'customer.login.guest_continue' | t }}">
+               {% endform %}
+               {% endif %}
+
+             </div>
+           </div>  
+         </div>
+    </div>   
+
+
+

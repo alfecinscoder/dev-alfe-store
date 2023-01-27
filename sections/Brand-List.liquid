@@ -1,0 +1,97 @@
+<!--======  #SHOP BY BRANDS  ==========--> 
+<div id="shop_brands" class="wow fadeInUpSmall"  data-wow-delay="200ms"  data-section-id="{{ section.id }}" data-section-type="brand-list" > 
+  <div class="container">
+    {% if section.settings.title != blank %}
+    <h3 class="site_title">{{ section.settings.title }}</h3>
+    {% else %}
+    <h3 class="site_title">SHOP BY BRANDS</h3>
+    {% endif  %} 
+    <ul class="brand_list">
+
+      {% for block in section.blocks %}
+
+      <div class="one-whole">
+        {% if block.settings.image != blank %}
+        <li>
+          <a href="{{ block.section.link }}">
+            <img src="{{ block.settings.image | img_url: 'large' }}" alt="Brand {{ forloop.index }}"/>
+          </a>
+        </li>
+        {% else %}
+       		<li><span>{{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}</span><h3>{{ block.settings.title }}</h3></li>
+       {% endif %}
+
+      </div>
+      {% endfor %}
+    </ul>
+  </div>
+    </div>  
+
+{% schema %}
+   {
+    "name": "Brand List",
+	
+    "settings": [
+    	{	
+			"type":"header",
+			"content":"Brand List"
+		},	
+		{
+			"type":"text",
+			"id":"title",
+			"label":"Heading Text"
+		}
+    ],
+	"blocks":[
+	   {
+      "type": "image",
+      "name": "brand",
+    "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+		
+        },
+       	{
+			"type":"url",
+			"id":"link",
+			"label":"URL"
+		}
+      ]
+    }	
+  ],
+  "presets": [
+      {
+        "name": "Brand List",
+        "category": "Image",
+        "settings": {
+        },
+        "blocks": [
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
+		  {
+            "type": "image"
+          },
+		  {
+            "type": "image"
+          }
+
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

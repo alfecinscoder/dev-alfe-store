@@ -1,0 +1,63 @@
+
+{% if template contains 'article' or template contains 'blog' %}
+
+{% capture permalinkURL %}{{ shop.url }}{{ article.url }}{% endcapture %}
+{% capture shareTitle %}{{ article.title }}{% endcapture %}
+  <ul class="qodef-blog-share five-twelfths">
+	{% if settings.facebook_share %}   
+  	<li><a target="_blank" href="//www.facebook.com/sharer.php?u={{ permalinkURL }}"  class="fa fa-facebook"></a>
+  	</li>
+    {% endif %}
+
+ 	{% if settings.twitter_share %} 
+   <li> <a target="_blank" href="//twitter.com/share?url={{ permalinkURL }}&amp;text={{ shareTitle | url_param_escape }}" class="fa fa-twitter"></a></li>
+   {% endif %}
+    
+   {% if settings.pinterest_share %}
+    <li><a target="_blank" href="//pinterest.com/pin/create/button/?url={{ permalinkURL }}&amp;media=http:{{ product | img_url: '1024x1024' }}&amp;description={{ shareTitle | url_param_escape }}" class="fa fa-pinterest"></a></li>
+   {% endif  %}
+	 
+  {% if settings.linked_share %}
+  <li><a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url={{ permalinkURL }}&title={{ shareTitle | url_param_escape }}&source=[SOURCE/DOMAIN]"  class="fa fa-linkedin"></a></li>
+  {% endif %}
+
+{% if settings.share_google %}
+<li><a target="_blank" href="//plus.google.com/share?url={{ permalinkURL }}" class="fa fa-google-plus"></a></li>
+{% endif %}
+</ul>
+
+
+{% else %}
+
+
+        
+<div class="prodcut_share">
+  <label>share :</label>
+  <div class="social-icons">
+    {% capture permalinkURL %}{{ shop.url }}{{ product.url }}{% endcapture %}
+    {% capture shareTitle %}{{ product.title }}{% endcapture %}                                    
+    {% if settings.facebook_share %}   
+    <a  href="//www.facebook.com/sharer.php?u={{ permalinkURL }}"  class="fa fa-facebook" target="_blank"></a>
+    {% endif %}
+
+    {% if settings.twitter_share %}
+    <a  href="//twitter.com/share?url={{ permalinkURL }}&amp;text={{ shareTitle | url_param_escape }}" target="_blank"  class="fa fa-twitter"></a>
+    {% endif %}
+
+    {% if settings.pinterest_share %}
+    <a target="_blank" href="//pinterest.com/pin/create/button/?url={{ permalinkURL }}&amp;media=http:{{ product | img_url: '1024x1024' }}&amp;description={{ shareTitle | url_param_escape }}" class="fa fa-pinterest"></a>
+    {% endif %}
+   
+
+    {% if settings.linked_share %}  
+    <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url={{ permalinkURL }}&title={{ shareTitle | url_param_escape }}&source=[SOURCE/DOMAIN]" class="fa fa-linkedin"></a>
+    {% endif %}  
+
+     {% if settings.share_google %}
+    <a target="_blank" href="//plus.google.com/share?url={{ permalinkURL }}" class="fa fa-google-plus">
+     </a>
+  {% endif %}
+  </div>
+</div>  
+
+{% endif %}

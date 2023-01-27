@@ -1,0 +1,73 @@
+<!--======  #INSTAGRAM  ===============-->  
+{% if section.settings.insta_access_Token != blank  %}
+ 
+<div id="instagram" class="wow fadeInUpSmall" data-wow-delay="200ms">
+      <div class="grid">
+          <div class="grid__item one-eighth insta_title medium-large--one-sixth medium-down--one-whole">
+                <h6>{{section.settings.title}}</h6>      
+            </div>
+            <div class="grid__item seven-eighths insta_img medium-large--five-sixths medium-down--one-whole">
+              <div class="grid">
+                   <div id="instafeed" data-access_Token="{{section.settings.insta_access_Token}}" data-User_Id="{{section.settings.insta_access_Token | split:'.' | first}}" data-limit="{{section.settings.insta_limit}}">
+  				 </div>
+            </div>
+        </div>
+    </div>
+  
+</div>          
+  {{ 'instafeed.min.js' | asset_url | script_tag }}
+  {{ 'instagram.js' | asset_url | script_tag }}
+
+{% else %}
+{{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
+{% include 'onboarding-instagram' %}
+{% endif %}
+
+
+
+{% schema %}
+  {
+    "name": "Instagram",
+    "settings": [
+	  {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "insta_client_id",
+        "label": "Enter Client ID"
+      },
+      {
+        "type": "text",
+        "id": "insta_access_Token",
+        "label": "Enter AccessToken",
+        "info": "[Where I can get My AccessToken?](https:\/\/www.hulkthemes.com\/pages\/instagram-access-token)"
+      },
+      {
+        "type": "text",
+        "id": "insta_userid",
+        "label": "User Id"
+      },
+      {
+        "type": "text",
+        "id": "insta_limit",
+        "label": "Number Of Images"
+      }
+	],
+    "presets": [
+      {
+        "name": "Instagram",
+        "category": "Image"
+      }
+    ]
+  }
+
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

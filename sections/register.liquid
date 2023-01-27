@@ -1,0 +1,45 @@
+<!-- /templates/customers/register.liquid -->
+  <!--======  #PAGE BANNER  ======-->
+
+<div class="wow fadeIn" data-wow-delay="200ms" id="page_banner" style="background:url({% if settings.customer_banner != blank %}{{ settings.customer_banner | img_url : 'master' }}{% else %}{{'banner_image.png' | asset_url }}{% endif %})center center no-repeat;  background-size:cover;"> 
+    <div class="container">
+    <div class="banner_caption">         
+   <h3>{{ 'customer.register.register' | t }}</h3>          
+      {%  include 'breadcrumb' %}
+    </div>
+  </div>
+</div>  
+
+
+   <!--======  #REGISTER  ============-->    
+<div id="customer-account">     
+  <div class="container">
+    <div class="account_content">               
+     {% comment %} <h5>{{ 'customer.register.title' | t }}</h5> {% endcomment %}
+      <div class="form-vertical">
+        {% form 'create_customer' %}
+
+        {{ form.errors | default_errors }}                      
+
+        <label for="FirstName" class="hidden-label">{{ 'customer.register.first_name' | t }}</label>
+        <input type="text" name="customer[first_name]" id="FirstName" class="input-full" placeholder="{{ 'customer.register.first_name' | t }}" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} >
+
+        <label for="LastName" class="hidden-label">{{ 'customer.register.last_name' | t }}</label>
+        <input type="text" name="customer[last_name]" id="LastName" class="input-full" placeholder="{{ 'customer.register.last_name' | t }}" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} >
+
+        <label for="Email" class="hidden-label">{{ 'customer.register.email' | t }}</label>
+        <input type="email" name="customer[email]" id="Email" class="input-full{% if form.errors contains 'email' %} error{% endif %}" placeholder="{{ 'customer.register.email' | t }}" {% if form.email %} value="{{ form.email }}"{% endif %} required>
+
+        <label for="CreatePassword" class="hidden-label">{{ 'customer.register.password' | t }}</label>
+        <input type="password" name="customer[password]" id="CreatePassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" placeholder="{{ 'customer.register.password' | t }}">
+
+        <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn--primary btn--full btn--small">             
+        <div class="login_footer text-center">  
+          <a href="/" style="float:none;"><i class="fa fa-angle-left" style="margin-right: 8px;"></i>{{ 'customer.register.cancel' | t }}</a>
+        </div>                 
+        {% endform %}
+      </div>
+    </div>  
+  </div>
+</div>    
+

@@ -1,0 +1,5 @@
+<select  id="filter-cat" class="filter-cat">
+  {% for link in linklists[settings.gender_menu].links %}
+             <option >{{ link.title }}</option> 
+  {% endfor %}
+</select>

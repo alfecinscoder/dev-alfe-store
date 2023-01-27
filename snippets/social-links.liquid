@@ -1,0 +1,16 @@
+{% if settings.footer_social_enable %}
+
+{% if settings.facebook_link != '' %}<a href="{{ settings.facebook_link }}" title="{{ 'layout.social.facebook_title' | t }}" class="fa fa-facebook" target="_blank"></a>{% endif %}
+{% if settings.twitter_link != '' %}<a href="{{ settings.twitter_link }}" title="{{ 'layout.social.twitter_title' | t }}" class="fa fa-twitter" target="_blank"></a>{% endif %}
+{% if settings.pinterest_link != '' %}<a href="{{ settings.pinterest_link }}" title="{{ 'layout.social.pinterest_title' | t }}" class="fa fa-pinterest" target="_blank"></a>{% endif %}
+{% if settings.google_link != '' %}<a href="{{ settings.google_link }}" title="{{ 'layout.social.google_title' | t }}" class="fa fa-google-plus" rel="publisher"></a>{% endif %}
+{% if settings.instagram_link != '' %}<a href="{{ settings.instagram_link }}" title="{{ 'layout.social.instagram_title' | t }}" class="fa fa-instagram" target="_blank"></a>{% endif %}
+{% if settings.vimeo_link != '' %}<a href="{{ settings.vimeo_link }}" title="{{ 'layout.social.vimeo_title' | t }}"  class="fa fa-vimeo" target="_blank"></a>{% endif %}
+{% if settings.youtube_link != '' %}<a href="{{ settings.youtube_link }}" title="{{ 'layout.social.youtube_title' | t }}" class="fa fa-youtube-play" target="_blank"></a>{% endif %}
+{% if settings.tumblr_link != '' %}<a href="{{ settings.tumblr_link }}" title="{{ 'layout.social.tumblr_title' | t }}" class="fa fa-tumblr" target="_blank"></a>{% endif %}
+
+{% endif %}
+
+
+
+

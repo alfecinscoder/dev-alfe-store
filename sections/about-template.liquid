@@ -1,0 +1,190 @@
+	<!--======  #PAGE BANNER  ======-->
+    <div id="page_banner" class="wow fadeIn" data-wow-delay="200ms" style="{% if section.settings.image != blank %}background:url({{ section.settings.image | img_url : 'master' }}) center;{% else %}background:url({{ 'banner_image.png' | asset_url }}) center;{% endif %} background-size:cover;">
+      <div class="container">
+        <div class="banner_caption">         
+          <h3>{{ page.title }}</h3>  
+          {% include 'breadcrumb' %}
+        </div>
+      </div>
+    </div>  
+
+      <!--======  #ABOUT SHOP  ============-->    
+    <div id="about_shop" data-section-id="{{ section.id }}" data-section-type="about-section">
+        <div class="container">        
+            <div class="grid"> 
+            	{{page.content}}
+            </div>        
+        </div>    
+    </div> 
+
+    <!--======  #TESTIMONIALS ============-->
+    {% if section.blocks.size > 0 %}
+      <div id="section-testimonial">  
+      <div class="container">            
+        <div class="six-tenths medium-down--eight-tenths testimonial">                   
+          <h5>{{ section.settings.testimonials_title }}</h5>
+          <ul class="testimonial-list">
+            {% for block in section.blocks %}
+            <li> 
+              <div class="client_review">   
+                <p>{{ block.settings.testimonial_content }}</p>
+                <span></span>
+                <h6>{{ block.settings.author }}</h6>
+              </div>
+            </li>
+
+            {% endfor %}
+          </ul>
+        </div>           
+      </div>				
+    </div>
+    {% endif %}
+     <!--======  #SERVICES ============-->    
+
+ 
+    <div id="our_services">
+        <div class="container--small">  
+            <div class="grid"> 
+            {% if section.settings.shipping_enable %}
+				<div class="grid__item one-third medium-down--one-whole">                	
+                	<div class="services_item">
+                        <div class="services_icon"><i class="fa fa-truck"></i></div>
+                        <h6>{{ section.settings.shipping_title }}</h6>
+                        <p>{{ section.settings.shipping_subtitle }}</p>
+                    </div>
+                   
+                </div>
+                 {% endif %}
+                 {% if section.settings.customer_enable %}
+                <div class="grid__item one-third medium-down--one-whole">
+                	<div class="services_item">
+                        <div class="services_icon"><i class="fa fa-headphones"></i></div>
+                        <h6>{{ section.settings.customer_title }}</h6>
+                        <p>{{ section.settings.customer_subtitle }}</p>
+                    </div>
+                </div>
+                {% endif %}
+                {% if section.settings.return_enable %}
+                <div class="grid__item one-third medium-down--one-whole">
+                	<div class="services_item">
+                        <div class="services_icon"><i class="fa fa-refresh"></i></div>
+                        <h6>{{ section.settings.return_title }}</h6>
+                        <p>{{ section.settings.return_subtitle }}</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>        
+        </div>    
+    </div>        
+
+
+{% schema %}
+  {
+    "name": "About Us",
+	"max_blocks":10,	
+    "settings": [
+	  {
+		"type":"image_picker",
+		"id":"image",
+		"label":"Banner Image",
+		"info": "Maximum image dimensions are  1920px wide by 278px high. The uploaded file will be resized to fit within those constraints."
+	  }, 
+      {
+        "type": "header",
+        "content": "Testimonial"
+      },
+      {
+        "type": "text",
+        "id": "testimonials_title",
+        "label": "Title Name"
+      },
+	  	
+      {
+        "type": "header",
+        "content": "Services"
+      },
+      {
+        "type": "checkbox",
+        "id": "shipping_enable",
+        "label": "Show Shipping Policy",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "shipping_title",
+        "label": "Title",
+        "default": "FREE SHIPPING WORLDWIDE"
+      },
+      {
+        "type": "text",
+        "id": "shipping_subtitle",
+        "label": "Subtitle",
+        "default": "Guaranteed Delivery in 4 Days"
+      },
+      {
+        "type": "checkbox",
+        "id": "customer_enable",
+        "label": "Show Customer Service",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "customer_title",
+        "label": "Title",
+        "default": "24\/7 CUSTOMER SERVICE"
+      },
+      {
+        "type": "text",
+        "id": "customer_subtitle",
+        "label": "Subtitle",
+        "default": "Call Us 24\/7 At 0123456789"
+      },
+      {
+        "type": "checkbox",
+        "id": "return_enable",
+        "label": "Show Return Policy",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "return_title",
+        "label": "Title",
+        "default": "EASY RETURNS!"
+      },
+      {
+        "type": "text",
+        "id": "return_subtitle",
+        "label": "Subtitle",
+        "default": "Send Within 30 days"
+      }
+    ],
+"blocks":[
+	{
+      "type": "Text",
+      "name": "Testimonial",
+    "settings": [
+       
+        {
+        "type": "textarea",
+        "id": "testimonial_content",
+        "label": "Content"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author Name"
+        }
+        
+      ]
+    }
+
+]	
+
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,22 @@
+
+   <ul class="pagination">
+      {% if paginate.previous %} 
+       <li class="page"><a href="{{ paginate.previous.url }}" class="fa fa-long-arrow-left"></a></li>
+      {% endif %} 
+
+
+      {% for part in paginate.parts %}
+            {% if part.is_link %}
+           <li class="page">{{ part.title | link_to: part.url}}</li>
+            {% else %}
+           {% assign page_item_name = part.title %}
+           {% assign current_page = paginate.current_page %}
+           <li class="page {% if page_item_name == current_page %}current{% else %}unavailable{%endif%}">{{ part.title}}</li>
+            {% endif %}
+       {% endfor %}
+
+      {% if paginate.next %}  
+       <li class="page"><a href="{{ paginate.next.url }}" class="fa fa-long-arrow-right"></a></li>    
+    {% endif %}    
+
+  </ul>

@@ -1,0 +1,27 @@
+<!-- snippets/onboarding-featured-collections.liquid -->
+<div class="grid__item">
+  <div class="helper-section">
+    <div class="helper-note">
+      <span class="helper-icon"></span>
+       <h3>Homepage - featured collections</h3>
+      <p>You are seeing this message as you have enabled the Featured collections section of your Home page options but have yet to choose a menu from the section titled: Home page - featured collections </p>
+      <p>To configure this section go to the <a href="/admin/themes/{{ theme.id }}/settings" class="grid__image">theme Customizer</a> and open the section named: Homepage - featured collections.</p>
+      <p>Need more help? take a look at our <a class="admin-btn-primary" href="#">tutorial</a></p>
+    </div>
+
+    <div class="grid-uniform text-center helper-content">
+      {% for i in (1..5) %}
+        <div class="grid__item one-quarter large--one-quarter medium--one-quarter small--one-whole">
+          <a href="#" class="grid__image">
+            {% capture imageUrl %}//cdn.shopify.com/s/images/themes/product-{{ i }}.png{% endcapture %}
+            {{ imageUrl | img_tag }}
+          </a>
+          <p>
+            <a href="#">{{ 'homepage.onboarding.collection_title' | t }}</a><br>
+            {{ 'collections.general.items_with_count' | t: count: i }}
+          </p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,221 @@
+ <!--======  #PAGE BANNER  ======-->
+
+<div id="page_banner" class="wow fadeIn" data-wow-delay="200ms"  style="background:url({% if settings.page_banner != blank %}{{ settings.page_banner | img_url : 'master' }}{% else %}{{'banner_image.png' | asset_url }}{% endif %}) center center no-repeat; background-size:cover;">
+  <div class="container">
+    <div class="banner_caption">         
+      <h3>{{ page.title }}</h3>  
+      {% include 'breadcrumb' %}
+    </div>
+  </div>
+</div>   
+    <div id="cart_items">       
+      <div class="container"> 
+        <!-- Cart layout -->
+
+        <div class="cart-layout" > 
+          <!-- Cart Header   -->
+          <div class="cart-header" id="wishlist-header" >                	
+            <div class="grid__item large--two-sixths max-large--two-sixths medium-large--two-sixths medium--three-fifths small--one-half">                         
+              <div class="th cart-item-name">
+                <h6>Product name</h6>
+              </div>
+            </div>   
+            <div class="grid__item large--one-eighth max-large--one-eighth medium-large--one-eighth">                         
+
+            </div>  
+            <div class="grid__item large--one-eighth max-large--one-eighth medium-large--one-eighth">                         
+              <div class="th cart-price">
+                <h6>Price</h6>
+              </div>
+            </div>   
+            <div class="grid__item large--two-twelfths max-large--two-twelfths medium-large--two-twelfths grid_qty">                         
+              <div class="th qty">
+                <h6>stock</h6>
+              </div>
+            </div>   
+            <div class="grid__item twelfths two-twelfths medium-large--three-twelfths medium--two-fifths small--one-half">                         
+              <div class="th cart-total medium-large--text-left ">
+                <h6>add to cart</h6>
+              </div>
+            </div>  
+            <div class="grid__item one-twelfth" style="width:0px;">
+              <!--<div class="th cart-total">
+<h6>remove</h6>
+</div>-->
+            </div>                   
+          </div>
+
+          {% if customer %}
+          <div class="cart-items">  
+
+            {% for tag in customer.tags %}
+            {% assign the_test = 'nutthin' %}
+            {% capture tag_id %}{{ tag }}{% endcapture %}
+            {% assign tag_size = tag_id.size %}
+            {% for tag in customer.tags %}
+            {% capture cur_tag %}{{ tag }}{% endcapture %}
+            {% if cur_tag contains tag_id %}
+            {% assign difference = tag_size | minus:cur_tag.size %}
+            {% if difference == 0 %}
+            {% assign the_test = tag_id %}
+            {% else %}
+            {% assign the_test = 'nutthin' %}
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            {% for collection in collections %}
+            {% paginate collection.products by collection.all_products_count %}
+            {% for product in collection.products %}
+            {% capture product_id %}{{ product.id }}{% endcapture %}
+            {% unless used contains product_id %}
+            {% capture diff %}{{ tag_size | minus:product_id.size | money_without_currency | times:100 | divided_by:2 }}{% endcapture %}
+            {% assign check = diff | split:'.' %}
+            {% if check[1] contains '5' %}{% assign display = false %}{% else %}{% assign display = true %}{% endif %}
+            {% if display and the_test contains product_id %}
+            <div class="row-{{tag_id}} product-item" id="x{{ tag_id }}">
+              <div class="cart-item wishlist-items">                  
+                <div class="grid__item large--one-eighth max-large--one-eighth medium-large--one-eighth medium--one-fifth small--one-quarter">
+
+                  <div class="tr cart-item-name">
+                    <a href="{{product.url}}">
+                      <img src="{{ product.featured_image.src | img_url: 'grande' }}" />
+                    </a>
+                  </div>
+                </div>
+                <div class="grid__item large--two-sixths max-large--two-sixths medium-large--two-sixths medium--four-fifths small--three-quarters">
+                  <div class="tr cart-des">
+                    <h6><a href="{{product.url}}">{{product.title}}</a>  </h6>
+
+                  </div>
+                </div>
+                <div class="grid__item large--one-eighth max-large--one-eighth medium-large--one-eighth medium--one-third small--three-tenths">
+
+                  <div class="tr cart-price">
+                    <p><span class=money>{{ product.price | money }}</span></p>
+                  </div>
+                </div>
+                <div class="grid__item large--two-twelfths max-large--two-twelfths medium-large--two-twelfths medium--one-third small--three-tenths">   
+                  <div class="tr cart-stock">
+                    {% if sold_out %}                                   
+                    <p>Out of Stock</p>
+
+                    {% else %}
+                    <p >In Stock</p>
+                    {% endif %}   
+                  </div>
+                </div>	
+                <div class="grid__item large--two-twelfths max-large--two-twelfths medium-large--two-twelfths medium--one-third small--four-tenths">
+
+                  <div class="tr cart-total">
+
+
+                    {% assign variantCount = product.variants | size %}
+
+                    <form action="/cart/add" method="post" id="product-actions-{{ product.id }}" enctype="multipart/form-data">
+
+                      {% if sold_out %}
+
+                      <input class="btn--primary btn--small" type="submit" value="Unavailable" disabled="disabled" />
+                      {% else %}	
+                      {% if variantCount > 1 %}
+
+                      <input class="btn--primary btn--small" type="button" onclick="window.location.href='{{product.url}}'" value="Select options" />
+
+                      {% else %}
+
+                      <a class="js-add-to-cart btn--primary btn--small" data-id="{{ product }}">Add to Cart</a>
+
+                      <input type="hidden" name="id" value="{{ product.variants[0].id }}" />      
+
+                      {% endif %}
+                      {% endif %}
+                    </form> 
+                  </div>
+                </div>
+                <div class="grid__item one-twelfth">
+                  <div class="trash">
+                    <a href="#0" class="js-remove-button"><i class="fa fa-trash"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>                        
+
+            {% capture used %}{{ product_id }} {{ used }}{% endcapture %}
+            {% endif %}
+            {% endunless %}
+            {% endfor %}
+            {% endpaginate %}
+            {% endfor %}
+            {% endfor %}
+          </div>  
+
+
+
+          <form method='post' action='/contact' id='remove' accept-charset='UTF-8'>
+            <input name='form_type' type='hidden' value='customer'/>
+            <input name='utf8' type='hidden' value='✓'>
+            <input type='hidden' name='contact[email]' value='{{ customer.email }}'/>
+            <input type='hidden' name='contact[tags]'id="remove-value" value='' />
+          </form>
+          {% capture subject %}My%20{{ shop.name | replace: ' ','%20' }}%20Wish%20List{% endcapture %}
+          {% capture body %}I%20have%20added%20the%20following%20items%20to%20my%20wish%20list%20at%20{{ shop.name | replace: ' ','%20' }}{% endcapture %}
+          {% capture body %}{{ body }} {% for tag in customer.tags %}{% assign the_test = 'nutthin' %}{% capture tag_id %}{{ tag }}{% endcapture %}{% assign tag_count = 0 %}{% assign tag_size = tag_id | size %}{% for tag in customer.tags %}{% capture cur_tag %}{{ tag }}{% endcapture %}{% if cur_tag contains tag_id %}{% assign cur_tag_size = cur_tag | size %}{% assign difference = tag_size | minus: cur_tag_size %}{% if difference == 0 %}{% assign the_test = tag_id %}{% else %}{% assign the_test = 'nutthin' %}{% endif %}{% endif %}{% endfor %}{% for p in collections.all.products %}{% capture pID %}{{ p.id }}{% endcapture %}{% capture difference %}{{ tag_size | minus:pID.size | money_without_currency | times:100 | divided_by: 2 }}{% endcapture %}{% assign check = difference | split:'.' %}{% if check[1] contains '5' %}{% assign display = false %}{% else %}{% assign display = true %}{% endif %}{% if display and the_test contains pID %}%0A%0A{{ p.title | replace: ' ','%20' }}%3A%20%20{{ shop.url }}{{ p.url }}{% endif %}{% endfor %}{% endfor %}{% endcapture %}
+          <a class="share" id="share_via_mail" href='mailto:?to=&?subject={{ subject }}&amp;body={{ body }}'>Share my wish list via email</a>                                 
+
+          <div class="empty_wishlist wishlist_empty_txt" id="empty_wslt">                
+            <div class="cart-empty text-center">
+              <div class=" fa fa-heart-o"></div>
+              <h6>NO MORE ITEM IN YOUR WISHLIST</h6> 
+              <p class="add-item-msg">You can add items from your shopping bag by clicking on save</p>
+              <b><a href="/cart">GO TO CART</a></b>
+              <div class="cart_divider">or</div>
+              <p>Get started with options below</p>
+              <div class="collection_link">
+                {% for collection in collections %}
+                {% unless collection.handle contains 'best-sellers'  %}
+                <a href="{{ collection.url }}">{{ collection.title }}</a>
+                {% endunless  %}
+                {% endfor %}
+
+              </div>              
+            </div>
+          </div>                    
+
+        </div>                        
+{% else %}
+
+        <div class="wishlist_empty_txt text-center">
+          <div class="text-center wishlist-logout">
+            <div class=" fa fa-heart-o"></div>
+            <h6>To create a wish list you must </h6><div><a href='/account/login' class="btn--primary btn--small">sign in</a></div> or <a href='/account/register' class="text-link">create an account</a>.</p> 
+            {% comment %}
+            <p class="add-item-msg">You can add items from your shopping bag by clicking on save</p>
+            <p><a href="/cart"><strong>GO TO CART</strong></a></p>
+            <div class="cart_divider">and</div>
+            <p>Get started with options below</p>
+            <div class="collection_link">
+              {% for collection in collections %}
+              {% unless collection.handle contains 'best-sellers'  %}
+              <a href="{{ collection.url }}">{{ collection.title }}</a>
+              {% endunless  %}
+              {% endfor %}
+
+            </div>
+            {% endcomment %}
+          </div>
+                    
+    <script type="text/javascript">
+        $("#wishlist-header").hide();
+    </script>
+</div>  
+{% endif %}
+    
+                  
+
+ </div>     
+</div>
+</div>     
+ 
+
+ {{ 'wish-list.js' | asset_url | script_tag }}  
+  

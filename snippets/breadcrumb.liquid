@@ -1,0 +1,65 @@
+<!-- /snippets/breadcrumb.liquid -->
+{% comment %}
+  Documentation - http://docs.shopify.com/support/your-website/navigation/creating-a-breadcrumb-navigation
+{% endcomment %}
+
+{% unless template == 'index' or template == 'cart' %}
+<nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+  <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}">
+  {{ 'general.breadcrumbs.home' | t }}</a>
+
+  {% if template contains 'product' %}
+
+    {% if collection %}
+      <!--<span aria-hidden="true">&rsaquo;</span>-->
+      {% if collection.handle %}
+        {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+        {{ collection.title | link_to: url }}
+      {% endif %}
+    {% endif %}
+   <!-- <span aria-hidden="true">&rsaquo;</span>-->
+    <span>{{ product.title }}</span>
+
+  {% elsif template contains 'collection' and collection.handle %}
+
+    <!--<span aria-hidden="true">&rsaquo;</span>-->
+    {% if current_tags %}
+      {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+      {{ collection.title | link_to: url }}
+      <!--<span aria-hidden="true">&rsaquo;</span>-->
+    {% else %}
+      <span>{{ collection.title }}</span>
+    {% endif %}
+
+  {% elsif template == 'blog' %}
+
+    
+    {% if current_tags %}
+      {{ blog.title | link_to: blog.url }}
+    {% else %}
+    <span>{{ blog.title }}</span>
+    {% endif %}
+
+  {% elsif template == 'article' %}
+
+    
+    {{ blog.title | link_to: blog.url }}
+   
+    <span>{{ article.title }}</span>
+
+  {% elsif template contains 'page' %}
+
+   
+  <a href="/{{ page.handle }}">{{ page.title  | capitalize   }}</a>
+  
+ {% elsif template contains 'search' %}
+ 
+  <span>Search</span>
+  
+  {% else %}
+
+ <a href="/{{ page.handle }}">{{ page_title | capitalize  }}</a>
+
+  {% endif %}
+</nav>
+{% endunless %}

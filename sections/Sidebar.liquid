@@ -1,0 +1,176 @@
+<section id="FixedSideBar"> 
+    <div class="perent-sidebar">        
+        <div class="Side-top">          
+        
+          <div class="logo">
+            {% if section.settings.logo_use_image %}
+            <a href="/" itemprop="url">
+              {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
+              <img src="{{ section.settings.logo | img_url: image_size }}"
+                   srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+                   alt="{{ section.settings.logo.alt | default: shop.name }}"
+                   itemprop="logo">
+            </a>
+            {% else %}
+            <h3><a href="/" itemprop="url">{{ shop.name }}</a></h3>
+            {% endif %}   
+          </div>
+
+
+          <div id="top_header">
+            <ul>
+              {% if section.settings.search_icon %}
+                <li class="search"><i class="fa fa-search"></i> <i class="fa fa-times"></i></li>
+              {% endif %}
+              
+              {% if section.settings.enble_login_dtail %}
+              <li class="settings"><i class="fa fa-cog"></i> <i class="fa fa-times"></i></li>
+              {% endif %}
+              {% if section.settings.enable_cart_button %}
+              <li>              
+              	<a href="/cart"  class="fa fa-shopping-cart cart_link" aria-controls="CartDrawer" aria-expanded="false">
+                  	<span class="item_cnt" id="CartCount">{{ cart.item_count }}</span>
+                </a>                 
+              </li>
+              {% endif %}
+            </ul>	
+          </div>
+          
+          {% if section.settings.search_icon %}
+          <div id="search">          
+            <div class="search-bar">
+              <span class="input input--madoka">
+                <form action="/search" method="get"  role="search">
+                  <input class="input__field input__field--madoka" type="serch" name="q" id="search-input"  placeholder="{{ 'general.search.placeholder' | t }}....." aria-label="{{ 'general.search.placeholder' | t }}" >
+                  <label class="input__label input__label--madoka" for="search-input">
+                    <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                      <path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+                    </svg>
+                  </label>
+                  <input type="hidden" name="type" value="product" />
+                </form>
+              </span>
+             </div>   
+          </div>
+          {% endif %}
+          
+          {% if section.settings.enble_login_dtail %}
+          <div id="settings">
+            
+              {% include 'currency-picker' %}
+
+              <ul class="snd_nav">
+                {% if customer %}
+                <li><a href="/account"><i class="fa fa-unlock-alt"></i>{{ 'layout.customer.account' | t }}</a></li>
+                {% else %}
+                
+                <li><a href="/account/login"><i class="fa fa-user"></i>{{ 'customer.login.sign_in' | t }}</a></li> 
+                <li><a href="/account/register"><i class="fa fa-user"></i>Sign Up</a></li>
+                {% endif %}
+                {% if customer %}
+                <li><a href="/account/logout" id="customer_logout_link"><i class="fa fa-user"></i>{{ 'layout.customer.log_out' | t }}</a>
+                </li>
+                {% endif %}
+                <li><a href="/pages/wishlist"><i class="fa fa-heart"></i>wishlist</a></li>
+              </ul> 
+          
+          </div>
+        {% endif %}
+           <div id='main-nav'>
+              {% include 'nav-menu' %}
+            </div>                   
+          
+        </div> 
+        <div class="Side-bottom">
+          
+          {% if linklists[section.settings.footer_menu].links != blank %}
+            <ul class="btm_nav">
+				{% for link in linklists[section.settings.footer_menu].links %}
+                  <li>{{ link.title | link_to: link.url }}</li>
+                 {% endfor %}
+            </ul>
+          {% endif %}
+
+          {% if section.settings.enable_social_links %}
+            <div class="Side_Social_nav"> 
+              <span class="social-links">
+                {% include 'social-links' %}
+              </span>
+            </div>
+          {% endif %}
+        </div>     
+    </div>     
+</section>
+
+	{% include 'newsletter-popup' %}
+
+{% schema %}
+    {
+    "name": "Sidebar",
+    "settings": [
+     {
+        "type": "header",
+        "content": "Logo"
+      },
+      {
+        "type": "checkbox",
+        "id": "logo_use_image",
+        "label": "Use Custom Logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Custom Logo"
+      },
+      {
+        "type": "text",
+        "id": "logo_max_width",
+        "label": "Custom logo width (in pixels)",
+        "default": "450"
+      },
+     
+      {
+        "type": "checkbox",
+        "id": "search_icon",
+        "label": "Show Search Icon",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enble_login_dtail",
+        "label": "Show Login Detail",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_cart_button",
+        "label": "Show Cart Icon",
+        "default": true
+      },
+	  {
+        "type": "header",
+        "content": "Bottom Menu"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_menu",
+        "label": "Choose Menu",
+        "default": "footer"
+      },
+	 {
+		"type":"checkbox",
+		"id":"enable_social_links",
+		"label":"Enable Social Sharing"
+	}
+  
+     
+    ]
+  }
+ 
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,13 @@
+<div class="comment_item grid">  
+   <div class="grid__item one-sixth medium--two-tenths small--one-whole">
+          <div class="comment_img">
+                 <img src="{{ 'avatar.png' | asset_url }}" />
+            </div>
+ </div>
+                                  <div class="grid__item five-sixths medium--eight-tenths small--one-whole">
+                                    <div class="comment_desc">
+                                   <h6>{{ article.author }}<span>{{ article.published_at | date: "%d %b" }}</span></h6>
+                                      <p> {{ comment.content }}</p>
+                                  </div>
+                                  </div>
+                              </div>

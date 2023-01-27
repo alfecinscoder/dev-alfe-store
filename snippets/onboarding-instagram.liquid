@@ -1,0 +1,30 @@
+<!-- snippets/onboarding-instagram.liquid -->
+
+<div id="instagram">
+     <div class="grid"> 
+       <div class="grid__item one-eighth insta_title medium-large--one-sixth medium-down--one-whole">
+              <h6>Follow us on Instagram</h6>    
+       </div> 
+      <div class="grid__item seven-eighths insta_img medium-large--five-sixths medium-down--one-whole">
+           <div class="grid">
+             <div id="instafeed">
+             {% for i in (1..12) %}
+               
+				<div class="grid__item two-twelfths">
+                 <a href="/admin/themes/{{ theme.id }}/settings" target="_blank">
+                   <div class="insta_img">
+                    {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
+                   </div>
+                   <div class="likes"><i class="fa fa-instagram"></i></div>
+                 </a>
+               </div>
+			 {% endfor %}
+             </div>
+            </div>
+         </div>
+      </div>
+    </div>
+
+
+
+ 

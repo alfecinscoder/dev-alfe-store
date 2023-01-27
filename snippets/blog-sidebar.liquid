@@ -1,0 +1,79 @@
+<!-- /snippets/blog-sidebar.liquid -->
+
+<div class="sidebar_section">  
+    {% if settings.blog_search_enable %}
+  <div class="blog_search">
+
+    {% include 'blog-search' %}
+ 
+  </div>
+   {% endif %}
+  
+  
+  {% if settings.blog_enable_categories %}
+  <div class="latest_blog">                        
+    <div class="sidebar_title">
+      <h6>{{ settings.category_title }}</h6>                                
+    </div>                        
+    <div class="blog_categories_list">
+      <ul>
+        {% for link in linklists[settings.blog_choose_menu].links %}
+        <li>
+          <a href="{{ link.url }}"  {% if link.active or parent_link_active %} class="active"{% endif %}>{{ link.title }} </a> 
+         
+           {% if settings.enable_rss_field  %}
+            <a href="{{ link.url }}.atom"  target="_blank" class="active rss_link"> <i class="fa fa-rss"></i></a>
+            {% endif %}  
+          </li>
+        {% endfor %}
+      </ul>                                                            
+
+    </div>                        
+  </div>
+{% endif %}
+  {% if settings.latest_blog_enable %}   
+  <div class="latest_blog">                        
+    <div class="sidebar_title">
+      <h6>{{settings.latest_blog_title}}</h6>   
+    </div>                        
+    <div class="latest_blog_list">
+      {% for article in blogs[blog.handle].articles limit:3 %}                         
+      <div class="latest_blog_item">
+        {% if article.image.src != blank %}
+        <img src="{{ article.image.src | img_url: 'medium' }}" alt="{{ article.image.alt | escape }}" />
+        {% else %}
+        {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
+        {% endif %}                                  
+        <div class="latest_blog_desc">
+          <h6><a href="{{ article.url }}">{{ article.title }}</a></h6>
+          <p>By <span>{{ article.author }}</span> On <span>{{ article.published_at | date: "%d , %m, %Y" }}</span></p> 
+        </div>
+      </div>
+      {% endfor %}                                  
+    </div>                        
+  </div>
+  {% endif %} 
+
+  {% if settings.post_tag_enable %} 
+  <div class="post_tags">                        
+    <div class="sidebar_title">
+      <h6>{{ settings.post_tag_title }}</h6>
+    </div>                        
+    <div class="post_tag_list">
+      {% if blog.tags.size > 0 %}   
+      <ul>
+        {% for tag in blog.all_tags %}
+        {% if current_tags contains tag %}
+        <li class="active"><a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a></li>
+        {% else %}
+        <li><a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a></li>
+        {% endif %}
+
+        {% endfor %}
+
+      </ul>
+      {% endif %}                                
+    </div>                        
+  </div>
+  {% endif %}
+</div> 
